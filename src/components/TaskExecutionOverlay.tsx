@@ -176,13 +176,13 @@ export default function TaskExecutionOverlay({
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg">
       <ModalOverlay bg="blackAlpha.600" />
-      <ModalContent bg={bgColor} maxW="600px" mx={4} maxH="90vh">
+      <ModalContent bg={bgColor} maxW="600px" mx={4} maxH="90vh" borderRadius="0.75rem">
         {/* Header with Cover Image */}
         <Box position="relative">
           <Box
             height="200px"
             bgGradient={`linear(to-br, ${taskColor.replace('.500', '.400')}, ${taskColor.replace('.500', '.600')})`}
-            borderRadius="md md 0 0"
+            borderRadius="0.75rem 0.75rem 0 0"
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -232,9 +232,7 @@ export default function TaskExecutionOverlay({
               <Text fontSize="sm" color="gray.500">
                 Step {currentStep + 1} of {sampleQuestions.length}
               </Text>
-              <Text fontSize="sm" color="gray.500">
-                {Math.round(progress)}% Complete
-              </Text>
+              
             </HStack>
 
             {/* Question */}

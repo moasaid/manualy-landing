@@ -11,8 +11,6 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  Text,
-  VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
 import {
@@ -32,7 +30,7 @@ export default function TopBar() {
 
   return (
     <Box
-      w="full"
+      w="calc(100vw - 200px)"
       h="16"
       bg={bgColor}
       borderBottom="1px solid"
@@ -43,7 +41,6 @@ export default function TopBar() {
       position="fixed"
       top={0}
       left="200px"
-      right={0}
       zIndex={5}
     >
       <HStack spacing={4} w="full" justify="space-between">
@@ -74,19 +71,12 @@ export default function TopBar() {
             color="gray.600"
             _hover={{ bg: 'gray.100' }}
           />
-          <IconButton
-            aria-label="Calendar"
-            icon={<Calendar size={20} />}
-            variant="ghost"
-            size="md"
-            color="gray.600"
-            _hover={{ bg: 'gray.100' }}
-          />
+          
           <Menu>
             <MenuButton
               as={Box}
               cursor="pointer"
-              p={1}
+              p={0.5}
               borderRadius="md"
               _hover={{
                 bg: 'gray.50',
@@ -97,18 +87,10 @@ export default function TopBar() {
                 <Avatar
                   size="sm"
                   name="John Doe"
-                  bg="blue.500"
+                  bg="brand.500"
                   color="white"
                 />
-                <VStack spacing={0} align="flex-start" display={{ base: 'none', md: 'flex' }}>
-                  <Text fontSize="sm" fontWeight="medium" color="gray.700">
-                    John Doe
-                  </Text>
-                  <Text fontSize="xs" color="gray.500">
-                    Admin
-                  </Text>
-                </VStack>
-                <ChevronDown size={14} color="gray" />
+                <ChevronDown size={16} color="gray" />
               </HStack>
             </MenuButton>
             <MenuList>

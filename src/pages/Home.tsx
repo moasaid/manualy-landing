@@ -13,6 +13,7 @@ import {
   Badge,
   Avatar,
   useColorModeValue,
+  Icon,
 } from '@chakra-ui/react';
 import {
   X,
@@ -34,27 +35,45 @@ export default function Home() {
   const recentTasks = [
     {
       id: 1,
-      title: 'Check-in Process Review',
+      name: 'Check-in Process Review',
+      description: 'Review and update front desk check-in procedures for improved guest experience',
       status: 'In Progress',
       assignee: 'John Doe',
+      completedBy: 'John Doe',
       dueDate: '2 hours ago',
+      completedAt: '2024-01-15 14:30',
       priority: 'high',
+      color: 'blue.500',
+      bgColor: 'blue.50',
+      icon: Users,
     },
     {
       id: 2,
-      title: 'Room Cleaning Protocol',
+      name: 'Room Cleaning Protocol',
+      description: 'Standard operating procedures for housekeeping staff room cleaning',
       status: 'Completed',
       assignee: 'Jane Smith',
+      completedBy: 'Jane Smith',
       dueDate: '1 day ago',
+      completedAt: '2024-01-14 16:45',
       priority: 'medium',
+      color: 'green.500',
+      bgColor: 'green.50',
+      icon: Settings,
     },
     {
       id: 3,
-      title: 'Guest Complaint Handling',
+      name: 'Guest Complaint Handling',
+      description: 'Procedures for handling and resolving guest complaints effectively',
       status: 'Pending',
       assignee: 'Mike Johnson',
+      completedBy: null,
       dueDate: '3 days ago',
+      completedAt: null,
       priority: 'high',
+      color: 'red.500',
+      bgColor: 'red.50',
+      icon: BookOpen,
     },
   ];
 
@@ -90,16 +109,6 @@ export default function Home() {
     },
   ];
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high':
-        return 'red';
-      case 'medium':
-        return 'yellow';
-      default:
-        return 'green';
-    }
-  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -128,14 +137,33 @@ export default function Home() {
 
           {/* Onboarding Section - Dismissible */}
           {showOnboarding && (
-            <Card bg={cardBg} shadow="sm">
-              <CardBody>
+            <Card 
+              bg={cardBg} 
+              shadow="sm"
+              backgroundImage="url('https://images.unsplash.com/photo-1700498466261-824cbd01974e?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
+              backgroundSize="cover"
+              borderRadius="xl"
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              position="relative"
+              overflow="hidden"
+            >
+              <Box
+                position="absolute"
+                top={0}
+                left={0}
+                right={0}
+                bottom={0}
+                bg="blackAlpha.600"
+                borderRadius="md"
+              />
+              <CardBody position="relative" zIndex={1}>
                 <HStack justify="space-between" align="flex-start" mb={4}>
                   <Box>
-                    <Text fontSize="lg" fontWeight="semibold" mb={2}>
+                    <Text fontSize="lg" fontWeight="semibold" mb={1} color="white">
                       Get Started with Manualy
                     </Text>
-                    <Text color="gray.600" fontSize="sm">
+                    <Text color="whiteAlpha.800" fontSize="sm">
                       Complete these steps to set up your hospitality operations
                     </Text>
                   </Box>
@@ -144,6 +172,7 @@ export default function Home() {
                     icon={<X size={16} />}
                     size="sm"
                     variant="ghost"
+                    color="white"
                     onClick={() => setShowOnboarding(false)}
                   />
                 </HStack>
@@ -202,41 +231,94 @@ export default function Home() {
               </Button>
             </HStack>
             
-            <SimpleGrid columns={{ base: 1, lg: 3 }} spacing={4}>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={6}>
               {recentTasks.map((task) => (
-                <Card key={task.id} bg={cardBg} shadow="sm" _hover={{ shadow: 'md' }} cursor="pointer">
-                  <CardBody>
-                    <VStack align="stretch" spacing={3}>
-                      <HStack justify="space-between">
-                        <Badge colorScheme={getPriorityColor(task.priority)} size="sm">
-                          {task.priority}
-                        </Badge>
-                        <Badge colorScheme={getStatusColor(task.status)} variant="subtle">
+                <Box
+                  key={task.id}
+                  p={6}
+                  bg={cardBg}
+                  borderRadius="xl"
+                  border="1px solid"
+                  borderColor="gray.200"
+                  _hover={{
+                    transform: 'translateY(-4px)',
+                    boxShadow: 'xl',
+                    borderColor: 'brand.500',
+                  }}
+                  transition="all 0.3s"
+                  cursor="pointer"
+                  height="400px"
+                >
+                  <VStack spacing={4} align="flex-start" height="full">
+                    <Box
+                      borderRadius="lg"
+                      color="brand.500"
+                    >
+                      <Icon as={task.icon} boxSize={6} />
+                    </Box>
+                    
+                    <VStack spacing={3} align="flex-start" flex={1}>
+                      <HStack justify="space-between" w="full">
+                        <Text fontWeight="semibold" fontSize="md" color="gray.800">
+                          {task.name}
+                        </Text>
+                        <Badge colorScheme={getStatusColor(task.status)} variant="subtle" size="sm">
                           {task.status}
                         </Badge>
                       </HStack>
                       
-                      <Text fontWeight="semibold" fontSize="md">
-                        {task.title}
+                      <Text fontSize="sm" color="gray.600" lineHeight={1.6}>
+                        {task.description}
                       </Text>
-                      
-                      <HStack spacing={2}>
-                        <Avatar size="xs" name={task.assignee} />
-                        <Text fontSize="sm" color="gray.600">
-                          {task.assignee}
-                        </Text>
-                      </HStack>
-                      
-                      <HStack spacing={1} color="gray.500">
-                        <Clock size={14} />
-                        <Text fontSize="xs">{task.dueDate}</Text>
-                      </HStack>
+
+                      {/* Task details */}
+                      <VStack spacing={2} align="flex-start" w="full">
+                        <HStack spacing={2}>
+                          <Avatar size="xs" name={task.assignee} />
+                          <Text fontSize="xs" color="gray.500">
+                            Assigned to {task.assignee}
+                          </Text>
+                        </HStack>
+                        
+                        {task.status === 'Completed' && task.completedBy && (
+                          <HStack spacing={2}>
+                            <Avatar size="xs" name={task.completedBy} />
+                            <Text fontSize="xs" color="gray.500">
+                              Completed by {task.completedBy}
+                            </Text>
+                          </HStack>
+                        )}
+                        
+                        <HStack spacing={1} color="gray.500">
+                          <Clock size={12} />
+                          <Text fontSize="xs">
+                            {task.status === 'Completed' && task.completedAt 
+                              ? `Completed ${task.completedAt}`
+                              : `Due ${task.dueDate}`
+                            }
+                          </Text>
+                        </HStack>
+                      </VStack>
                     </VStack>
-                  </CardBody>
-                </Card>
+
+                    <Button
+                      w="full"
+                      bg="brand.500"
+                      color="white"
+                      size="sm"
+                      minH="32px"
+                      _hover={{ bg: 'brand.600' }}
+                      borderRadius="lg"
+                      isDisabled={task.status === 'Completed'}
+                    >
+                      {task.status === 'Completed' ? 'Completed' : 'Continue Task'}
+                    </Button>
+                  </VStack>
+                </Box>
               ))}
             </SimpleGrid>
           </Box>
+          
 
           {/* Template Manuals Section */}
           <Box>
@@ -249,35 +331,58 @@ export default function Home() {
               </Button>
             </HStack>
             
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={4}>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={6}>
               {templateManuals.map((manual) => (
-                <Card key={manual.id} bg={cardBg} shadow="sm" _hover={{ shadow: 'md' }} cursor="pointer">
-                  <CardBody>
-                    <VStack align="stretch" spacing={3}>
-                      <HStack spacing={3}>
-                        <Box p={2} bg="gray.100" borderRadius="md">
-                          <BookOpen size={20} color="gray.600" />
-                        </Box>
-                        <Badge colorScheme="gray" variant="subtle" size="sm">
-                          {manual.category}
-                        </Badge>
-                      </HStack>
-                      
-                      <Text fontWeight="semibold" fontSize="md">
+                <Box
+                  key={manual.id}
+                  p={6}
+                  bg={cardBg}
+                  borderRadius="xl"
+                  border="1px solid"
+                  borderColor="gray.200"
+                  _hover={{
+                    transform: 'translateY(-4px)',
+                    boxShadow: 'xl',
+                    borderColor: 'brand.500',
+                  }}
+                  transition="all 0.3s"
+                  cursor="pointer"
+                  height="full"
+                >
+                  <VStack spacing={4} align="flex-start" height="full">
+                    <Box
+                      borderRadius="lg"
+                      color="brand.500"
+                    >
+                      <BookOpen size={24} />
+                    </Box>
+                    
+                    <VStack spacing={3} align="flex-start" flex={1}>
+                      <Text fontWeight="semibold" fontSize="md" color="gray.800">
                         {manual.title}
                       </Text>
-                      
-                      <Text fontSize="sm" color="gray.600" noOfLines={2}>
+                      <Text fontSize="sm" color="gray.600" lineHeight={1.6}>
                         {manual.description}
                       </Text>
-                      
                       <HStack spacing={1} color="gray.500">
                         <FileText size={14} />
                         <Text fontSize="xs">{manual.tasks} tasks</Text>
                       </HStack>
                     </VStack>
-                  </CardBody>
-                </Card>
+
+                    <Button
+                      w="full"
+                      bg="brand.500"
+                      color="white"
+                      size="sm"
+                      minH="32px"
+                      _hover={{ bg: 'brand.500' }}
+                      borderRadius="lg"
+                    >
+                      Use Template
+                    </Button>
+                  </VStack>
+                </Box>
               ))}
             </SimpleGrid>
           </Box>

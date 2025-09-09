@@ -159,7 +159,7 @@ const TaskCard = ({ task, onEditTask, onStartManual }: { task: typeof tasks[0]; 
           borderRadius="lg"
           onClick={onStartManual}
         >
-          Start manual
+          Start tasks
         </Button>
       </VStack>
     </Box>

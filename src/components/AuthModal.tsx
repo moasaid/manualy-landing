@@ -1,26 +1,33 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Modal,
   ModalOverlay,
   ModalContent,
+  ModalHeader,
+  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  VStack,
-  HStack,
-  Text,
-  Input,
   Button,
+  FormControl,
+  FormLabel,
+  Input,
+  VStack,
+  Text,
+  Divider,
+  HStack,
+  useColorModeValue,
+  Alert,
+  AlertIcon,
+  InputGroup,
+  InputRightElement,
+  InputLeftElement,
+  IconButton,
+  Box,
   Checkbox,
   Link,
-  useColorModeValue,
-  Box,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  IconButton,
-  Divider,
 } from '@chakra-ui/react';
-import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -31,6 +38,7 @@ interface AuthModalProps {
 export default function AuthModal({ isOpen, onClose, onSignInSuccess }: AuthModalProps) {
   const [isSignIn, setIsSignIn] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -56,6 +64,9 @@ export default function AuthModal({ isOpen, onClose, onSignInSuccess }: AuthModa
     onClose();
     if (isSignIn && onSignInSuccess) {
       onSignInSuccess();
+    } else if (!isSignIn) {
+      // Navigate to onboarding page when creating account
+      navigate('/onboarding');
     }
   };
 

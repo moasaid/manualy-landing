@@ -25,7 +25,7 @@ import {
 
 const ListHeader = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Text fontWeight={'500'} fontSize={'lg'} mb={2} color="gray.800">
+    <Text fontWeight={'500'} fontSize={'lg'} mb={2} color="white">
       {children}
     </Text>
   );

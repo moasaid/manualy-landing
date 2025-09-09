@@ -33,8 +33,8 @@ const MenuItem = ({ item }: { item: typeof menuItems[0] }) => {
   const location = useLocation();
   const isActive = location.pathname === item.path;
   
-  const activeBg = useColorModeValue('purple.50', 'purple.900');
-  const activeColor = useColorModeValue('purple.600', 'purple.300');
+  const activeBg = useColorModeValue('purple.50', 'brand.900');
+  const activeColor = useColorModeValue('brand.600', 'brand.300');
   const hoverBg = useColorModeValue('gray.100', 'gray.700');
   const textColor = useColorModeValue('gray.700', 'gray.300');
 
@@ -114,11 +114,11 @@ export default function Sidebar() {
             
             <Button
               w="full"
-              bg="purple.500"
+              bg="brand.500"
               color="white"
               size="sm"
               rightIcon={<ChevronDown size={16} />}
-              _hover={{ bg: 'purple.600' }}
+              _hover={{ bg: 'brand.600' }}
             >
               [Account Name]
             </Button>

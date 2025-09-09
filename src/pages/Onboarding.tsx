@@ -61,9 +61,9 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
   const inputBg = useColorModeValue('white', 'gray.700');
 
   const steps = [
-    { title: 'Personal Info', icon: User },
-    { title: 'Business Info', icon: Building },
-    { title: 'Invite Team', icon: Users }
+    { title: 'Personal Info' },
+    { title: 'Business Info' },
+    { title: 'Invite Team' }
   ];
 
   const progress = ((currentStep + 1) / steps.length) * 100;
@@ -129,18 +129,7 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
 
   const renderPersonalInfo = () => (
     <VStack spacing={6} align="stretch">
-      <VStack spacing={4} textAlign="center">
-        <Box
-          p={4}
-          borderRadius="2xl"
-          bg="purple.500"
-          color="white"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <User size={32} />
-        </Box>
+      <VStack spacing={4} >
         <VStack spacing={2}>
           <Heading size="lg" color={textColor}>
             Tell us about yourself
@@ -161,6 +150,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
             bg={inputBg}
             borderRadius="lg"
             py={6}
+            _hover={{ borderColor: "brand.500" }}
+            _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
           />
         </FormControl>
         
@@ -173,6 +164,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
             bg={inputBg}
             borderRadius="lg"
             py={6}
+            _hover={{ borderColor: "brand.500" }}
+            _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
           />
         </FormControl>
       </SimpleGrid>
@@ -186,6 +179,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
           bg={inputBg}
           borderRadius="lg"
           py={2}
+          _hover={{ borderColor: "brand.500" }}
+          _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
         >
           {hearAboutOptions.map((option) => (
             <option key={option} value={option}>{option}</option>
@@ -203,6 +198,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
             bg={inputBg}
             borderRadius="lg"
             py={6}
+            _hover={{ borderColor: "brand.500" }}
+            _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
           />
         </FormControl>
       )}
@@ -215,7 +212,7 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
         <Box
           p={4}
           borderRadius="2xl"
-          bg="purple.500"
+          bg="brand.500"
           color="white"
           display="flex"
           alignItems="center"
@@ -242,6 +239,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
           bg={inputBg}
           borderRadius="lg"
           py={6}
+          _hover={{ borderColor: "brand.500" }}
+          _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
         />
       </FormControl>
 
@@ -254,6 +253,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
           bg={inputBg}
           borderRadius="lg"
           py={6}
+          _hover={{ borderColor: "brand.500" }}
+          _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
         />
       </FormControl>
 
@@ -267,6 +268,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
             bg={inputBg}
             borderRadius="lg"
             py={2}
+            _hover={{ borderColor: "brand.500" }}
+            _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
           >
             {businessTypes.map((type) => (
               <option key={type} value={type}>{type}</option>
@@ -283,6 +286,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
             bg={inputBg}
             borderRadius="lg"
             py={2}
+            _hover={{ borderColor: "brand.500" }}
+            _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
           >
             {businessSizes.map((size) => (
               <option key={size} value={size}>{size}</option>
@@ -301,6 +306,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
             bg={inputBg}
             borderRadius="lg"
             py={6}
+            _hover={{ borderColor: "brand.500" }}
+            _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
           />
         </FormControl>
       )}
@@ -314,6 +321,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
           bg={inputBg}
           borderRadius="lg"
           py={6}
+          _hover={{ borderColor: "brand.500" }}
+          _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
         />
       </FormControl>
     </VStack>
@@ -325,7 +334,7 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
         <Box
           p={4}
           borderRadius="2xl"
-          bg="purple.500"
+          bg="brand.500"
           color="white"
           display="flex"
           alignItems="center"
@@ -356,6 +365,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
                   placeholder="colleague@company.com"
                   bg={inputBg}
                   borderRadius="lg"
+                  _hover={{ borderColor: "brand.500" }}
+                  _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
                 />
               </FormControl>
               
@@ -367,6 +378,8 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
                   placeholder="Manager, Staff, etc."
                   bg={inputBg}
                   borderRadius="lg"
+                  _hover={{ borderColor: "brand.500" }}
+                  _focus={{ borderColor: "brand.500", boxShadow: "0 0 0 1px var(--chakra-colors-brand-500)" }}
                 />
               </FormControl>
               
@@ -411,85 +424,109 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
   };
 
   return (
-    <Box minH="100vh" bg={bgColor} py={8}>
-      <Box maxW="600px" mx="auto" px={4}>
-        <VStack spacing={8} align="stretch">
-          {/* Header */}
+    <Box minH="100vh" bg={bgColor}>
+      {/* Top Progress Bar - Full Width */}
+      <Box bg="brand.500" borderBottom="1px" borderColor="gray.200">
+        <Box mx="auto">
           <VStack spacing={4}>
-            <img 
-              src="/logo-app.svg" 
-              alt="HospitalityAI Logo" 
-              style={{ height: '48px', width: 'auto' }}
+            <Progress 
+              value={progress} 
+              colorScheme="brand" 
+              size="sm" 
+              borderRadius="full" 
+              w="full" 
+              bg="gray.100"
             />
-            <VStack spacing={2} textAlign="center">
-              <Heading size="xl" color={textColor}>
-                Welcome to HospitalityAI
-              </Heading>
-              <Text color="gray.500">
-                Let's get you set up in just a few steps
-              </Text>
-            </VStack>
+            
           </VStack>
+        </Box>
+      </Box>
 
-          {/* Progress */}
-          <VStack spacing={4}>
-            <Progress value={progress} colorScheme="purple" size="lg" borderRadius="full" w="full" />
-            <HStack spacing={8} justify="center">
+      {/* Main Content */}
+      <Box py={8}>
+        <Box maxW="600px" mx="auto" px={4}>
+          <VStack spacing={8} align="stretch">
+            {/* Header */}
+            <VStack spacing={4}>
+              <img 
+                src="/logo.png" 
+                alt="Manualy Logo" 
+                style={{ height: '48px', width: 'auto' }}
+              />
+              <VStack spacing={2} textAlign="center">
+                <Text color="gray.500">
+                  Let's get you set up in just a few steps
+                </Text>
+              </VStack>
+            </VStack>
+
+            <HStack spacing={6} justify="center" flexWrap="wrap">
               {steps.map((step, index) => (
-                <VStack key={index} spacing={2}>
-                  <Box
-                    p={2}
-                    borderRadius="full"
-                    bg={index <= currentStep ? "purple.500" : "gray.200"}
-                    color={index <= currentStep ? "white" : "gray.500"}
-                  >
-                    <step.icon size={20} />
-                  </Box>
-                  <Text fontSize="sm" color={index <= currentStep ? textColor : "gray.500"}>
-                    {step.title}
-                  </Text>
-                  {index === currentStep && (
-                    <Badge colorScheme="purple" size="sm">Current</Badge>
-                  )}
-                </VStack>
+                <Box
+                  key={index}
+                  bg={index <= currentStep ? "brand.50" : "gray.50"}
+                  border="2px"
+                  borderColor={index <= currentStep ? "brand.500" : "gray.200"}
+                  borderRadius="xl"
+                  p={3}
+                  minW="120px"
+                  transition="all 0.2s"
+                >
+                  <VStack spacing={2}>
+                    
+                    <Text 
+                      fontSize="xs" 
+                      fontWeight="medium"
+                      color={index <= currentStep ? "brand.700" : "gray.500"}
+                      textAlign="center"
+                    >
+                      {step.title}
+                    </Text>
+                    {index === currentStep && (
+                      <Badge colorScheme="purple" size="sm" fontSize="xs">
+                        Current
+                      </Badge>
+                    )}
+                  </VStack>
+                </Box>
               ))}
             </HStack>
+
+            {/* Content */}
+            <Box bg={cardBg} p={8} borderRadius="2xl" shadow="sm">
+              {renderCurrentStep()}
+            </Box>
+
+            {/* Navigation */}
+            <HStack justify="space-between">
+              <Button
+                leftIcon={<ArrowLeft size={16} />}
+                variant="outline"
+                onClick={handlePrevious}
+                isDisabled={currentStep === 0}
+                borderRadius="lg"
+                py={6}
+                px={8}
+              >
+                Previous
+              </Button>
+              
+              <Button
+                rightIcon={<ArrowRight size={16} />}
+                bg="brand.500"
+                color="white"
+                onClick={handleNext}
+                isDisabled={!canProceed()}
+                _hover={{ bg: "brand.600" }}
+                borderRadius="lg"
+                py={6}
+                px={8}
+              >
+                {currentStep === steps.length - 1 ? 'Complete Setup' : 'Next'}
+              </Button>
+            </HStack>
           </VStack>
-
-          {/* Content */}
-          <Box bg={cardBg} p={8} borderRadius="2xl" shadow="sm">
-            {renderCurrentStep()}
-          </Box>
-
-          {/* Navigation */}
-          <HStack justify="space-between">
-            <Button
-              leftIcon={<ArrowLeft size={16} />}
-              variant="outline"
-              onClick={handlePrevious}
-              isDisabled={currentStep === 0}
-              borderRadius="lg"
-              py={6}
-              px={8}
-            >
-              Previous
-            </Button>
-            
-            <Button
-              rightIcon={<ArrowRight size={16} />}
-              bg="purple.500"
-              color="white"
-              onClick={handleNext}
-              isDisabled={!canProceed()}
-              _hover={{ bg: "purple.600" }}
-              borderRadius="lg"
-              py={6}
-              px={8}
-            >
-              {currentStep === steps.length - 1 ? 'Complete Setup' : 'Next'}
-            </Button>
-          </HStack>
-        </VStack>
+        </Box>
       </Box>
     </Box>
   );

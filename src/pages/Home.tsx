@@ -14,6 +14,7 @@ import {
   Avatar,
   useColorModeValue,
   Icon,
+  Divider,
 } from '@chakra-ui/react';
 import {
   X,
@@ -157,8 +158,8 @@ export default function Home() {
                 bg="blackAlpha.600"
                 borderRadius="md"
               />
-              <CardBody position="relative" zIndex={1}>
-                <HStack justify="space-between" align="flex-start" mb={4}>
+              <CardBody position="relative" zIndex={1} p={6}>
+                <HStack justify="space-between" align="flex-start" mb={3}>
                   <Box>
                     <Text fontSize="lg" fontWeight="semibold" mb={1} color="white">
                       Get Started with Manualy
@@ -173,6 +174,8 @@ export default function Home() {
                     size="sm"
                     variant="ghost"
                     color="white"
+                    bg="whiteAlpha.200"
+                    _hover={{ bg: "whiteAlpha.300" }}
                     onClick={() => setShowOnboarding(false)}
                   />
                 </HStack>
@@ -220,6 +223,9 @@ export default function Home() {
             </Card>
           )}
 
+          {/* Divider */}
+          <Divider borderColor="gray.200" />
+
           {/* Recent Tasks Section */}
           <Box>
             <HStack justify="space-between" align="center" mb={4}>
@@ -250,22 +256,21 @@ export default function Home() {
                   height="400px"
                 >
                   <VStack spacing={4} align="flex-start" height="full">
-                    <Box
+                    <Badge 
+                      colorScheme={getStatusColor(task.status)} 
+                      variant="solid" 
+                      size="lg"
+                      px={3}
+                      py={1}
                       borderRadius="lg"
-                      color="brand.500"
                     >
-                      <Icon as={task.icon} boxSize={6} />
-                    </Box>
+                      {task.status}
+                    </Badge>
                     
                     <VStack spacing={3} align="flex-start" flex={1}>
-                      <HStack justify="space-between" w="full">
-                        <Text fontWeight="semibold" fontSize="md" color="gray.800">
-                          {task.name}
-                        </Text>
-                        <Badge colorScheme={getStatusColor(task.status)} variant="subtle" size="sm">
-                          {task.status}
-                        </Badge>
-                      </HStack>
+                      <Text fontWeight="semibold" fontSize="md" color="gray.800">
+                        {task.name}
+                      </Text>
                       
                       <Text fontSize="sm" color="gray.600" lineHeight={1.6}>
                         {task.description}
@@ -319,6 +324,8 @@ export default function Home() {
             </SimpleGrid>
           </Box>
           
+          {/* Divider */}
+          <Divider borderColor="gray.200" />
 
           {/* Template Manuals Section */}
           <Box>

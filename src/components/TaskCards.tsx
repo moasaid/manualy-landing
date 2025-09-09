@@ -197,15 +197,9 @@ export default function TaskCards() {
       <VStack spacing={8} align="stretch">
         {/* Header */}
         <Box>
-          <Heading
-            as="h1"
-            size="xl"
-            color="gray.800"
-            mb={2}
-            fontFamily="Geist, sans-serif"
-          >
+          <Text fontSize="xl" fontWeight="semibold">
             Tasks
-          </Heading>
+          </Text>
         </Box>
 
         {/* Cards Grid */}

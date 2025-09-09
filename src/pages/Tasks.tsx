@@ -14,7 +14,7 @@ export default function Tasks({ onNavigateToLanding }: TasksProps) {
   const bgColor = useColorModeValue('gray.50', 'gray.900');
 
   return (
-    <Box minH="100vh" bg={bgColor}>
+    <Box bg={bgColor} minH="calc(100vh - 4rem)" p={6}>
       {/* Sidebar */}
       <Sidebar onNavigateToLanding={onNavigateToLanding} />
       

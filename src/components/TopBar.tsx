@@ -5,13 +5,24 @@ import {
   InputGroup,
   InputLeftElement,
   IconButton,
+  Avatar,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  Text,
+  VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
 import {
   Search,
   Bell,
   Calendar,
+  Settings,
+  LogOut,
   User,
+  ChevronDown,
 } from 'lucide-react';
 
 export default function TopBar() {
@@ -71,14 +82,48 @@ export default function TopBar() {
             color="gray.600"
             _hover={{ bg: 'gray.100' }}
           />
-          <IconButton
-            aria-label="Profile"
-            icon={<User size={20} />}
-            variant="ghost"
-            size="md"
-            color="gray.600"
-            _hover={{ bg: 'gray.100' }}
-          />
+          <Menu>
+            <MenuButton
+              as={Box}
+              cursor="pointer"
+              p={1}
+              borderRadius="md"
+              _hover={{
+                bg: 'gray.50',
+              }}
+              transition="all 0.2s"
+            >
+              <HStack spacing={3} align="center">
+                <Avatar
+                  size="sm"
+                  name="John Doe"
+                  bg="blue.500"
+                  color="white"
+                />
+                <VStack spacing={0} align="flex-start" display={{ base: 'none', md: 'flex' }}>
+                  <Text fontSize="sm" fontWeight="medium" color="gray.700">
+                    John Doe
+                  </Text>
+                  <Text fontSize="xs" color="gray.500">
+                    Admin
+                  </Text>
+                </VStack>
+                <ChevronDown size={14} color="gray" />
+              </HStack>
+            </MenuButton>
+            <MenuList>
+              <MenuItem icon={<User size={16} />}>
+                Profile
+              </MenuItem>
+              <MenuItem icon={<Settings size={16} />}>
+                Settings
+              </MenuItem>
+              <MenuDivider />
+              <MenuItem icon={<LogOut size={16} />} color="red.500">
+                Sign out
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </HStack>
       </HStack>
     </Box>

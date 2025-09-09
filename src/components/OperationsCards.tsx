@@ -6,20 +6,13 @@ import {
   Text,
   HStack,
   VStack,
-  Icon,
   useColorModeValue,
   IconButton,
   Flex,
+  Image,
+  Button,
 } from '@chakra-ui/react';
 import { 
-  ChefHat,
-  Bed,
-  Users,
-  Coffee,
-  Car,
-  Utensils,
-  Calendar,
-  ClipboardCheck,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
@@ -28,144 +21,145 @@ const operations = [
   {
     name: 'Kitchen Operations',
     duration: '15-20 min',
-    icon: ChefHat,
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop&crop=center',
     color: 'orange.500',
     description: 'Complete food preparation and safety protocols'
   },
   {
     name: 'Housekeeping',
     duration: '25-30 min',
-    icon: Bed,
+    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&h=600&fit=crop&crop=center',
     color: 'blue.500',
     description: 'Room cleaning and maintenance procedures'
   },
   {
     name: 'Guest Services',
     duration: '10-15 min',
-    icon: Users,
+    image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=600&fit=crop&crop=center',
     color: 'green.500',
     description: 'Customer interaction and service standards'
   },
   {
-    name: 'Bar Operations',
-    duration: '12-18 min',
-    icon: Coffee,
-    color: 'purple.500',
-    description: 'Beverage preparation and inventory management'
-  },
-  {
     name: 'Valet Services',
     duration: '8-12 min',
-    icon: Car,
+    image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=600&fit=crop&crop=center',
     color: 'teal.500',
     description: 'Vehicle handling and customer assistance'
   },
   {
     name: 'Restaurant Service',
     duration: '20-25 min',
-    icon: Utensils,
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=600&fit=crop&crop=center',
     color: 'red.500',
     description: 'Dining service and table management'
   },
   {
     name: 'Event Planning',
     duration: '30-45 min',
-    icon: Calendar,
+    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=600&fit=crop&crop=center',
     color: 'pink.500',
     description: 'Event coordination and setup procedures'
   },
   {
     name: 'Quality Control',
     duration: '15-20 min',
-    icon: ClipboardCheck,
+    image: 'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     color: 'cyan.500',
     description: 'Service quality assessment and reporting'
   },
 ];
 
 const OperationCard = ({ operation }: { operation: typeof operations[0] }) => {
-  const cardBg = useColorModeValue('white', 'gray.700');
-  const borderColor = useColorModeValue('gray.200', 'gray.600');
-  const textColor = useColorModeValue('gray.800', 'white');
-  const descColor = useColorModeValue('gray.600', 'gray.300');
+  const [isHovered, setIsHovered] = useState(false);
   
   return (
     <Box
       minW="280px"
       w="280px"
-      h="420px" // 2:3 aspect ratio (280px width x 420px height)
-      bg={cardBg}
+      h="420px"
       borderRadius="xl"
-      border="1px solid"
-      borderColor={borderColor}
-      p={6}
-      _hover={{
-        transform: 'translateY(-8px)',
-        boxShadow: '2xl',
-        borderColor: operation.color,
-      }}
-      transition="all 0.4s ease"
-      cursor="pointer"
       position="relative"
-      overflow="visible"
+      overflow="hidden"
+      cursor="pointer"
+      transition="all 0.3s ease"
+      _hover={{
+        transform: 'scale(1.05)',
+        boxShadow: '2xl',
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background gradient */}
+      {/* Background Image */}
+      <Image
+        src={operation.image}
+        alt={operation.name}
+        w="full"
+        h="full"
+        objectFit="cover"
+        transition="all 0.3s ease"
+        transform={isHovered ? 'scale(1.1)' : 'scale(1)'}
+      />
+      
+      {/* Dark Overlay */}
       <Box
         position="absolute"
         top={0}
         left={0}
         right={0}
-        height="120px"
-        bgGradient={`linear(to-br, ${operation.color.replace('.500', '.100')}, ${operation.color.replace('.500', '.50')})`}
-        opacity={0.3}
+        bottom={0}
+        bgGradient="linear(to-t, blackAlpha.800, blackAlpha.200, transparent)"
       />
       
-      <VStack spacing={6} align="flex-start" height="full" position="relative" zIndex={1}>
-        {/* Icon */}
-        <Box
-          p={4}
-          borderRadius="xl"
-          bg={operation.color}
-          color="white"
-          boxShadow="lg"
-        >
-          <Icon as={operation.icon} boxSize={8} />
-        </Box>
-        
-        {/* Content */}
-        <VStack spacing={4} align="flex-start" flex={1}>
-          <Heading size="lg" color={textColor} lineHeight={1.2}>
-            {operation.name}
-          </Heading>
-          
+      {/* Content Overlay */}
+      <Box
+        position="absolute"
+        bottom={0}
+        left={0}
+        right={0}
+        p={6}
+        color="white"
+      >
+        <VStack spacing={4} align="flex-start">
+          {/* Duration Badge */}
           <Box
-            bg={operation.color}
-            color="white"
+            bg="whiteAlpha.200"
+            backdropFilter="blur(10px)"
             px={3}
             py={1}
             borderRadius="full"
             fontSize="sm"
             fontWeight="semibold"
+            border="1px solid"
+            borderColor="whiteAlpha.300"
           >
             {operation.duration}
           </Box>
           
-          <Text color={descColor} lineHeight={1.6} fontSize="md">
-            {operation.description}
-          </Text>
+          {/* Title */}
+          <Heading size="lg" lineHeight={1.2} mb={2}>
+            {operation.name}
+          </Heading>
+          
+          {/* Play Button */}
+          <Button
+            bg="whiteAlpha.200"
+            color="white"
+            backdropFilter="blur(10px)"
+            border="1px solid"
+            borderColor="whiteAlpha.300"
+            borderRadius="full"
+            size="sm"
+            _hover={{
+              bg: "white",
+              color: "black",
+              transform: "scale(1.05)"
+            }}
+            transition="all 0.2s ease"
+          >
+            {operation.name}
+          </Button>
         </VStack>
-        
-        {/* Bottom accent */}
-        <Box
-          position="absolute"
-          bottom={0}
-          left={0}
-          right={0}
-          height="4px"
-          bg={operation.color}
-          borderRadius="full"
-        />
-      </VStack>
+      </Box>
     </Box>
   );
 };
@@ -224,9 +218,9 @@ export default function OperationsCards() {
   }, [totalDots]);
 
   return (
-    <Box bg={sectionBg} py={20} id="operations">
+    <Box bg={sectionBg} py={12} id="operations">
       <Container maxW="7xl">
-        <VStack spacing={12}>
+        <VStack spacing={8}>
           {/* Header */}
           <VStack spacing={4} textAlign="center" maxW="3xl">
             <Heading
@@ -234,6 +228,7 @@ export default function OperationsCards() {
               size="xl"
               color="gray.800"
               lineHeight={1.2}
+              fontFamily="Geist, sans-serif"
             >
               Hospitality Operations Made Simple
             </Heading>
@@ -293,7 +288,7 @@ export default function OperationsCards() {
                 'scrollbar-width': 'none',
               }}
             >
-              <HStack spacing={6} pb={16} pt={4} px={8}>
+              <HStack spacing={4} pb={8} pt={2} px={4}>
                 {operations.map((operation, index) => (
                   <OperationCard key={index} operation={operation} />
                 ))}
@@ -302,7 +297,7 @@ export default function OperationsCards() {
           </Box>
 
           {/* Scroll Indicator */}
-          <Flex justify="center" mt={6}>
+          <Flex justify="center" mt={3}>
             <HStack spacing={2}>
               {Array.from({ length: totalDots }).map((_, index) => (
                 <Box

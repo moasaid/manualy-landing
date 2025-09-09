@@ -12,6 +12,7 @@ import {
   IconButton,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Mail, 
   Phone, 
@@ -30,11 +31,8 @@ const ListHeader = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-interface FooterProps {
-  onNavigateToApp?: () => void;
-}
-
-export default function Footer({ onNavigateToApp }: FooterProps) {
+export default function Footer() {
+  const navigate = useNavigate();
   const bg = useColorModeValue('gray.900', 'gray.900');
   const textColor = useColorModeValue('gray.200', 'gray.200');
   const linkColor = useColorModeValue('gray.300', 'gray.300');
@@ -104,7 +102,7 @@ export default function Footer({ onNavigateToApp }: FooterProps) {
             <Link href={'#'} color={linkColor} _hover={{ color: 'white' }}>Integrations</Link>
             <Link href={'#'} color={linkColor} _hover={{ color: 'white' }}>API Documentation</Link>
             <Link 
-              onClick={onNavigateToApp}
+              onClick={() => navigate('/app')}
               color={linkColor} 
               _hover={{ color: 'white' }}
               cursor="pointer"

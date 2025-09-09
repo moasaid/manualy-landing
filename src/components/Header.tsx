@@ -29,6 +29,7 @@ const NavLink = ({ children, href }: { children: React.ReactNode; href: string }
     href={href}
     fontWeight="medium"
     color="gray.700"
+    fontSize="14px"
     transition="all 0.2s"
   >
     {children}
@@ -78,7 +79,7 @@ export default function Header({ onNavigateToApp, onNavigateToOnboarding }: Head
           </Box>
         </HStack>
         
-        <HStack spacing={8} alignItems={'center'} display={{ base: 'none', md: 'flex' }}>
+        <HStack spacing={2} alignItems={'center'} display={{ base: 'none', md: 'flex' }}>
           {Links.map((link) => (
             <NavLink key={link} href={`#${link.toLowerCase()}`}>
               {link}

@@ -11,7 +11,7 @@ import {
   Badge,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, Star, ChevronRight } from 'lucide-react';
 import DashboardPreview from './DashboardPreview';
 
 interface HeroProps {
@@ -64,17 +64,27 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
           <Badge
             colorScheme="brand"
             variant="subtle"
-            px={4}
+            px={3}
             py={2}
             borderRadius="full"
-            fontSize="sm"
+            fontSize="xs"
             fontWeight="medium"
-            bg="rgba(102, 102, 243, 0.1)"
-            color="brand.600"
+            bg="oklch(0.97 0 0);"
+            color="black"
             border="1px solid"
-            borderColor="rgba(102, 102, 243, 0.2)"
+            borderColor="rgba(102, 102, 243, 0.3)"
+            boxShadow="0 0 20px rgba(102, 102, 243, 0.4), 0 0 40px rgba(102, 102, 243, 0.2), 0 0 60px rgba(102, 102, 243, 0.1)"
+            textTransform="none"
+            _hover={{
+              boxShadow: "0 0 25px rgba(102, 102, 243, 0.5), 0 0 50px rgba(102, 102, 243, 0.3), 0 0 75px rgba(102, 102, 243, 0.15)",
+              transform: "scale(1.02)"
+            }}
+            transition="all 0.3s ease"
           >
-            ✨ New: HospitalityAI Intelligence Version 2.0
+            <HStack spacing={2} align="center">
+              <Text>✨ New: HospitalityAI Intelligence Version 2.0</Text>
+              <ChevronRight size={14} />
+            </HStack>
           </Badge>
 
           {/* Main Heading */}
@@ -86,6 +96,7 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
               lineHeight={1.1}
               color="gray.900"
               textAlign="center"
+              fontFamily="Geist, sans-serif"
             >
               Scale Your Hospitality Business{' '}
               <Text as="span" color="brand.500">

@@ -8,6 +8,7 @@ import {
   Button,
   Divider,
 } from '@chakra-ui/react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Home,
   User,
@@ -20,14 +21,18 @@ import {
 } from 'lucide-react';
 
 const menuItems = [
-  { name: 'Home', icon: Home, active: false },
-  { name: 'Agent', icon: User, active: false },
-  { name: 'Manuals', icon: BookOpen, active: false },
-  { name: 'Tasks', icon: CheckSquare, active: true },
-  { name: 'Schedule', icon: Calendar, active: false },
+  { name: 'Home', icon: Home, path: '/app/home' },
+  { name: 'Agent', icon: User, path: '/app/agent' },
+  { name: 'Manuals', icon: BookOpen, path: '/app/manuals' },
+  { name: 'Tasks', icon: CheckSquare, path: '/app/tasks' },
+  { name: 'Schedule', icon: Calendar, path: '/app/schedule' },
 ];
 
 const MenuItem = ({ item }: { item: typeof menuItems[0] }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isActive = location.pathname === item.path;
+  
   const activeBg = useColorModeValue('purple.50', 'purple.900');
   const activeColor = useColorModeValue('purple.600', 'purple.300');
   const hoverBg = useColorModeValue('gray.100', 'gray.700');
@@ -39,15 +44,16 @@ const MenuItem = ({ item }: { item: typeof menuItems[0] }) => {
       px={3}
       py={2}
       borderRadius="md"
-      bg={item.active ? activeBg : 'transparent'}
-      color={item.active ? activeColor : textColor}
-      _hover={{ bg: item.active ? activeBg : hoverBg }}
+      bg={isActive ? activeBg : 'transparent'}
+      color={isActive ? activeColor : textColor}
+      _hover={{ bg: isActive ? activeBg : hoverBg }}
       cursor="pointer"
       transition="all 0.2s"
+      onClick={() => navigate(item.path)}
     >
       <HStack spacing={3}>
         <Icon as={item.icon} boxSize={5} />
-        <Text fontSize="sm" fontWeight={item.active ? 'semibold' : 'medium'}>
+        <Text fontSize="sm" fontWeight={isActive ? 'semibold' : 'medium'}>
           {item.name}
         </Text>
       </HStack>
@@ -55,11 +61,8 @@ const MenuItem = ({ item }: { item: typeof menuItems[0] }) => {
   );
 };
 
-interface SidebarProps {
-  onNavigateToLanding?: () => void;
-}
-
-export default function Sidebar({ onNavigateToLanding }: SidebarProps) {
+export default function Sidebar() {
+  const navigate = useNavigate();
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const textColor = useColorModeValue('gray.800', 'white');
@@ -84,11 +87,11 @@ export default function Sidebar({ onNavigateToLanding }: SidebarProps) {
               src="/logo.svg" 
               alt="Manualy Logo" 
               style={{ 
-                height: '24px', 
+                height: '31px', 
                 width: 'auto',
                 cursor: 'pointer'
               }}
-              onClick={onNavigateToLanding}
+              onClick={() => navigate('/')}
             />
           </HStack>
         </Box>
@@ -101,13 +104,13 @@ export default function Sidebar({ onNavigateToLanding }: SidebarProps) {
           
           <Divider my={4} />
           
-          <MenuItem item={{ name: 'Members', icon: Users, active: false }} />
+          <MenuItem item={{ name: 'Members', icon: Users, path: '/app/members' }} />
         </VStack>
 
         {/* Bottom Section */}
         <Box p={4} borderTop="1px solid" borderColor={borderColor}>
           <VStack spacing={3}>
-            <MenuItem item={{ name: 'Settings', icon: Settings, active: false }} />
+            <MenuItem item={{ name: 'Settings', icon: Settings, path: '/app/settings' }} />
             
             <Button
               w="full"

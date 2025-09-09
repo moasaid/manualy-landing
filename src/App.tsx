@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Index from './pages/Index';
-import Inapp from './pages/Inapp';
+import Tasks from './pages/Tasks';
 import Onboarding from './pages/Onboarding';
+import Home from './pages/Home';
+import TaskCards from './components/TaskCards';
 
 function App() {
-  const [currentView, setCurrentView] = useState<'landing' | 'app' | 'onboarding'>('landing');
-
   // Add smooth scrolling behavior
   React.useEffect(() => {
     const style = document.createElement('style');
@@ -20,19 +21,23 @@ function App() {
     };
   }, []);
 
-  if (currentView === 'app') {
-    return <Inapp onNavigateToLanding={() => setCurrentView('landing')} />;
-  }
-
-  if (currentView === 'onboarding') {
-    return <Onboarding onComplete={() => setCurrentView('app')} />;
-  }
-
   return (
-    <Index 
-      onNavigateToApp={() => setCurrentView('app')}
-      onNavigateToOnboarding={() => setCurrentView('onboarding')}
-    />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/onboarding" element={<Onboarding />} />
+        <Route path="/app" element={<Tasks />}>
+          <Route index element={<Navigate to="/app/home" replace />} />
+          <Route path="home" element={<Home />} />
+          <Route path="tasks" element={<TaskCards />} />
+          <Route path="manuals" element={<div>Manuals Page</div>} />
+          <Route path="agent" element={<div>Agent Page</div>} />
+          <Route path="schedule" element={<div>Schedule Page</div>} />
+          <Route path="members" element={<div>Members Page</div>} />
+          <Route path="settings" element={<div>Settings Page</div>} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

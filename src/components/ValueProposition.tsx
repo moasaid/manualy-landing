@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Box,
   Container,
@@ -6,45 +7,23 @@ import {
   Text,
   SimpleGrid,
   VStack,
-  HStack,
-  Stat,
-  StatLabel,
-  StatNumber,
-  StatHelpText,
   useColorModeValue,
   Image,
   Button,
 } from '@chakra-ui/react';
-import { TrendingUp, Clock, DollarSign, Users } from 'lucide-react';
 
 const stats = [
   {
-    label: 'Time Savings',
-    number: '90%',
-    helpText: 'Reduction in manual SOP creation time',
-    icon: Clock,
+    title: 'Time & Cost Efficiency',
+    description: 'Reduce manual SOP creation time by 90% and save over $50K annually per property.',
+    icon: '/time.svg',
     color: 'brand.500',
   },
   {
-    label: 'Cost Reduction',
-    number: '$50K+',
-    helpText: 'Average annual savings per property',
-    icon: DollarSign,
+    title: 'Operational Excellence',
+    description: 'Boost operational efficiency by 40% while achieving 95% staff satisfaction.',
+    icon: '/quality.svg',
     color: 'teal.500',
-  },
-  {
-    label: 'Efficiency Boost',
-    number: '40%',
-    helpText: 'Improvement in operational efficiency',
-    icon: TrendingUp,
-    color: 'orange.500',
-  },
-  {
-    label: 'Staff Satisfaction',
-    number: '95%',
-    helpText: 'Employees find procedures clearer',
-    icon: Users,
-    color: 'brand.500',
   },
 ];
 
@@ -58,12 +37,23 @@ export default function ValueProposition() {
         <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={16} alignItems="center">
           <VStack spacing={8} align="flex-start">
             <Box>
+              <Box mb={6}>
+                <img 
+                  src="/unit.webp" 
+                  alt="HospitalityAI Logo" 
+                  style={{ 
+                    height: '40px', 
+                    width: 'auto'
+                  }}
+                />
+              </Box>
               <Heading
                 as="h2"
                 size="xl"
                 color="gray.800"
                 lineHeight={1.2}
                 mb={4}
+                fontFamily="Geist, sans-serif"
               >
                 Measurable Impact on Your Business Operations
               </Heading>
@@ -73,62 +63,60 @@ export default function ValueProposition() {
                 compliance, and cost savings.
               </Text>
               <Button
-                size="lg"
-                variant="outline"
-                _hover={{
-                  transform: 'translateY(-1px)',
-                }}
-              >
-                View Case Studies
-              </Button>
+              size="lg"
+              variant="outline"
+              _hover={{
+                transform: 'translateY(-1px)',
+              }}
+            >
+              View Case Studies
+            </Button>
             </Box>
 
             <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={6} w="full">
               {stats.map((stat, index) => {
-                const IconComponent = stat.icon;
                 return (
                   <Box
                     key={index}
-                    bg={cardBg}
                     p={6}
-                    borderRadius="lg"
-                    boxShadow="md"
+                    bg={cardBg}
+                    borderRadius="xl"
+                    border="1px solid"
+                    borderColor="gray.200"
                     _hover={{
-                      boxShadow: 'lg',
-                      transform: 'translateY(-2px)',
+                      transform: 'translateY(-4px)',
+                      boxShadow: 'xl',
+                      borderColor: 'brand.500',
                     }}
                     transition="all 0.3s"
+                    cursor="pointer"
+                    height="full"
                   >
-                    <HStack spacing={4} mb={3}>
+                    <VStack spacing={4} align="flex-start" height="full">
                       <Box
-                        p={2}
-                        borderRadius="md"
-                        bg={`${stat.color.replace('.500', '.50')}`}
+                        borderRadius="lg"
                         color={stat.color}
                       >
-                        <IconComponent size={20} />
+                        <Image src={stat.icon} alt={stat.title} width={6} height={6} />
                       </Box>
-                      <VStack spacing={0} align="flex-start">
-                        <Text fontSize="2xl" fontWeight="bold" color="gray.800">
-                          {stat.number}
-                        </Text>
-                        <Text fontSize="sm" fontWeight="medium" color="gray.600">
-                          {stat.label}
+                      
+                      <VStack spacing={3} align="flex-start" flex={1}>
+                        <Text color="gray.600" lineHeight={1.6}>
+                          {stat.description}
                         </Text>
                       </VStack>
-                    </HStack>
-                    <Text fontSize="sm" color="gray.500">
-                      {stat.helpText}
-                    </Text>
+                    </VStack>
                   </Box>
                 );
               })}
             </SimpleGrid>
+
+            
           </VStack>
 
           <Box>
             <Image
-              src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+              src="public/unit-food.webp"
               alt="Hotel operations team using digital procedures"
               borderRadius="xl"
               boxShadow="2xl"

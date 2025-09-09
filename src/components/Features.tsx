@@ -9,9 +9,9 @@ import {
   HStack,
   Icon,
   useColorModeValue,
+  Image,
 } from '@chakra-ui/react';
 import { 
-  Brain, 
   FileCheck, 
   Clock, 
   Users, 
@@ -25,49 +25,49 @@ const features = [
   {
     title: 'AI-Powered Generation',
     description: 'Generate comprehensive SOPs in minutes using advanced AI trained on hospitality best practices and industry standards.',
-    icon: Brain,
+    icon: '/ai.svg',
     color: 'brand.500',
   },
   {
     title: 'Industry Compliance',
     description: 'Ensure all procedures meet health, safety, and regulatory requirements with built-in compliance templates.',
-    icon: Shield,
+    icon: '/shield.svg',
     color: 'teal.500',
   },
   {
     title: 'Time Efficiency',
     description: 'Reduce manual creation time by 90%. What used to take weeks now takes hours with our intelligent automation.',
-    icon: Clock,
+    icon: '/time.svg',
     color: 'orange.500',
   },
   {
     title: 'Team Collaboration',
     description: 'Enable seamless collaboration between departments with real-time editing and approval workflows.',
-    icon: Users,
+    icon: '/team.svg',
     color: 'brand.500',
   },
   {
     title: 'Quality Assurance',
     description: 'Maintain consistent service quality with detailed, step-by-step procedures that eliminate guesswork.',
-    icon: FileCheck,
+    icon: '/quality.svg',
     color: 'teal.500',
   },
   {
     title: 'Performance Analytics',
     description: 'Track procedure effectiveness and staff compliance with built-in analytics and reporting tools.',
-    icon: BarChart3,
+    icon: '/analytics.svg',
     color: 'orange.500',
   },
   {
     title: 'Instant Updates',
     description: 'Deploy procedure updates across all locations instantly, ensuring everyone follows the latest protocols.',
-    icon: Zap,
+    icon: '/refresh.svg',
     color: 'brand.500',
   },
   {
     title: 'Multi-Location Support',
     description: 'Manage SOPs across multiple properties with centralized control and location-specific customizations.',
-    icon: Globe,
+    icon: '/multi-location.svg',
     color: 'teal.500',
   },
 ];
@@ -86,7 +86,7 @@ const FeatureCard = ({ feature }: { feature: typeof features[0] }) => {
       _hover={{
         transform: 'translateY(-4px)',
         boxShadow: 'xl',
-        borderColor: feature.color,
+        borderColor: 'brand.500',
       }}
       transition="all 0.3s"
       cursor="pointer"
@@ -94,12 +94,14 @@ const FeatureCard = ({ feature }: { feature: typeof features[0] }) => {
     >
       <VStack spacing={4} align="flex-start" height="full">
         <Box
-          p={3}
           borderRadius="lg"
-          bg={`${feature.color.replace('.500', '.50')}`}
           color={feature.color}
         >
-          <Icon as={feature.icon} boxSize={6} />
+          {typeof feature.icon === 'string' ? (
+            <Image src={feature.icon} alt={feature.title} boxSize={6} />
+          ) : (
+            <Icon as={feature.icon} boxSize={6} />
+          )}
         </Box>
         
         <VStack spacing={3} align="flex-start" flex={1}>
@@ -128,6 +130,7 @@ export default function Features() {
               size="xl"
               color="gray.800"
               lineHeight={1.2}
+              fontFamily="Geist, sans-serif"
             >
               Everything You Need to Streamline Hospitality Operations
             </Heading>

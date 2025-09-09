@@ -2,15 +2,15 @@ import {
   Box,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import TopBar from '../components/TopBar';
-import TaskCards from '../components/TaskCards';
 
-interface InappProps {
+interface TasksProps {
   onNavigateToLanding?: () => void;
 }
 
-export default function Inapp({ onNavigateToLanding }: InappProps) {
+export default function Tasks({ onNavigateToLanding }: TasksProps) {
   const bgColor = useColorModeValue('gray.50', 'gray.900');
 
   return (
@@ -27,7 +27,7 @@ export default function Inapp({ onNavigateToLanding }: InappProps) {
         mt="16"
         minH="calc(100vh - 4rem)"
       >
-        <TaskCards />
+        <Outlet />
       </Box>
     </Box>
   );

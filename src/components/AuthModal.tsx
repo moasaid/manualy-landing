@@ -80,15 +80,12 @@ export default function AuthModal({ isOpen, onClose, onSignInSuccess }: AuthModa
                 justifyContent="center"
               >
                 <img 
-                  src="/logo-app.svg" 
+                  src="/logo.png" 
                   alt="HospitalityAI Logo" 
-                  style={{ height: '52px', width: 'auto' }}
+                  style={{ height: '32px', width: 'auto' }}
                 />
               </Box>
               <VStack spacing={2}>
-                <Text fontSize="2xl" fontWeight="bold" color={textColor}>
-                  Get Started
-                </Text>
                 <Text color="gray.500" fontSize="md">
                   Sign in to your account or create a new one to get started
                 </Text>
@@ -244,7 +241,7 @@ export default function AuthModal({ isOpen, onClose, onSignInSuccess }: AuthModa
                       Remember me
                     </Text>
                   </Checkbox>
-                  <Link color="purple.500" fontSize="sm" fontWeight="medium">
+                  <Link color="oklch(0.59 0.21 278.01)" fontSize="sm" fontWeight="medium">
                     Forgot password?
                   </Link>
                 </HStack>
@@ -252,8 +249,7 @@ export default function AuthModal({ isOpen, onClose, onSignInSuccess }: AuthModa
 
               {/* Submit Button */}
               <Button
-                bg="black"
-                color="white"
+       
                 size="lg"
                 borderRadius="xl"
                 py={6}
@@ -261,12 +257,7 @@ export default function AuthModal({ isOpen, onClose, onSignInSuccess }: AuthModa
                 fontWeight="semibold"
                 rightIcon={<ArrowRight size={20} />}
                 onClick={handleSubmit}
-                _hover={{
-                  bg: "gray.800"
-                }}
-                _active={{
-                  bg: "gray.900"
-                }}
+            
               >
                 {isSignIn ? 'Sign In' : 'Create Account'}
               </Button>

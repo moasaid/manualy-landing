@@ -10,6 +10,10 @@ import {
   IconButton,
   useColorModeValue,
   Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react';
 import TaskModal from './TaskModal';
 import TaskExecutionOverlay from './TaskExecutionOverlay';
@@ -18,11 +22,9 @@ import {
   Bed,
   Users,
   Coffee,
-  Car,
   Utensils,
-  Calendar,
-  ClipboardCheck,
   Edit,
+  MoreVertical,
 } from 'lucide-react';
 
 const tasks = [
@@ -90,7 +92,7 @@ const TaskCard = ({ task, onEditTask, onStartManual }: { task: typeof tasks[0]; 
       transition="all 0.3s ease"
       cursor="pointer"
       position="relative"
-      overflow="visible"
+      overflow="hidden"
     >
       {/* Background gradient */}
       <Box
@@ -98,35 +100,41 @@ const TaskCard = ({ task, onEditTask, onStartManual }: { task: typeof tasks[0]; 
         top={0}
         left={0}
         right={0}
-        height="75px"
+        height="100px"
         bg={task.bgColor}
         borderRadius="xl xl 0 0"
         opacity={0.5}
       />
       
-      <VStack spacing={4} align="flex-start" height="full" position="relative" zIndex={1}>
+      <VStack spacing={12} align="flex-start" height="full" position="relative" zIndex={1}>
         {/* Header with Icon and Edit Button */}
         <HStack justify="space-between" w="full">
           <Box
             p={3}
             borderRadius="full"
-            bg={task.bgColor}
             color={task.color}
           >
             <Icon as={task.icon} boxSize={5} />
           </Box>
-          <IconButton
-            aria-label="Edit task"
-            icon={<Edit size={16} />}
-            size="sm"
-            variant="ghost"
-            color="gray.500"
-            _hover={{ color: task.color, bg: 'gray.100' }}
-            onClick={onEditTask}
-            position="absolute"
-            top={2}
-            right={2}
-          />
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="More options"
+              icon={<MoreVertical size={16} />}
+              size="sm"
+              variant="ghost"
+              color="gray.500"
+              _hover={{ color: task.color, bg: 'gray.100' }}
+              position="absolute"
+              top={2}
+              right={1}
+            />
+            <MenuList minW="80px" maxW="80px">
+              <MenuItem onClick={onEditTask}>
+                Edit
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </HStack>
         
         {/* Content */}
@@ -146,6 +154,7 @@ const TaskCard = ({ task, onEditTask, onStartManual }: { task: typeof tasks[0]; 
           bg={task.color}
           color="white"
           size="sm"
+          minH="32px"
           _hover={{ bg: task.color.replace('500', '600') }}
           borderRadius="lg"
           onClick={onStartManual}
@@ -193,6 +202,7 @@ export default function TaskCards() {
             size="xl"
             color="gray.800"
             mb={2}
+            fontFamily="Geist, sans-serif"
           >
             Tasks
           </Heading>

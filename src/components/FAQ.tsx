@@ -63,6 +63,7 @@ export default function FAQ() {
               size="xl"
               color="gray.800"
               lineHeight={1.2}
+              fontFamily="Geist, sans-serif"
             >
               Frequently Asked Questions
             </Heading>

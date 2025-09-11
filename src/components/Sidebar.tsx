@@ -7,6 +7,8 @@ import {
   useColorModeValue,
   Button,
   Divider,
+  useBreakpointValue,
+  Flex,
 } from '@chakra-ui/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
@@ -28,7 +30,7 @@ const menuItems = [
   { name: 'Schedule', icon: Calendar, path: '/app/schedule' },
 ];
 
-const MenuItem = ({ item }: { item: typeof menuItems[0] }) => {
+const MenuItem = ({ item, isMobile = false }: { item: typeof menuItems[0], isMobile?: boolean }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isActive = location.pathname === item.path;
@@ -37,6 +39,29 @@ const MenuItem = ({ item }: { item: typeof menuItems[0] }) => {
   const activeColor = useColorModeValue('brand.600', 'brand.300');
   const hoverBg = useColorModeValue('gray.100', 'gray.700');
   const textColor = useColorModeValue('gray.700', 'gray.300');
+
+  if (isMobile) {
+    return (
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        flex={1}
+        py={2}
+        px={1}
+        color={isActive ? activeColor : textColor}
+        cursor="pointer"
+        transition="all 0.2s"
+        onClick={() => navigate(item.path)}
+        _hover={{ color: activeColor }}
+      >
+        <Icon as={item.icon} boxSize={5} mb={1} />
+        <Text fontSize="xs" fontWeight={isActive ? 'semibold' : 'medium'} textAlign="center">
+          {item.name}
+        </Text>
+      </Flex>
+    );
+  }
 
   return (
     <Box
@@ -66,7 +91,35 @@ export default function Sidebar() {
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const textColor = useColorModeValue('gray.800', 'white');
+  
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
+  // Mobile Bottom Navigation
+  if (isMobile) {
+    return (
+      <Box
+        position="fixed"
+        bottom={0}
+        left={0}
+        right={0}
+        bg={bgColor}
+        borderTop="1px solid"
+        borderColor={borderColor}
+        zIndex={20}
+        px={2}
+        py={2}
+        boxShadow="0 -2px 10px rgba(0,0,0,0.1)"
+      >
+        <HStack spacing={0} justify="space-around">
+          {menuItems.slice(0, 5).map((item, index) => (
+            <MenuItem key={index} item={item} isMobile={true} />
+          ))}
+        </HStack>
+      </Box>
+    );
+  }
+
+  // Desktop Sidebar
   return (
     <Box
       w="200px"

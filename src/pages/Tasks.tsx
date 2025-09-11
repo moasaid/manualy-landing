@@ -1,5 +1,8 @@
 import {
   Box,
+  Container,
+  VStack,
+  Text,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
@@ -14,20 +17,29 @@ export default function Tasks({ onNavigateToLanding }: TasksProps) {
   const bgColor = useColorModeValue('gray.50', 'gray.900');
 
   return (
-    <Box bg={bgColor} minH="calc(100vh - 4rem)" p={6}>
+    <Box bg={bgColor} minH="100vh">
       {/* Sidebar */}
-      <Sidebar onNavigateToLanding={onNavigateToLanding} />
+      <Sidebar />
       
-      {/* Top Bar */}
+      {/* Top Bar - always show, responsive positioning */}
       <TopBar />
       
       {/* Main Content */}
       <Box
-        ml="200px"
-        mt="16"
+        ml={{ base: 0, md: "200px" }}
+        mt={{ base: "16", md: "16" }}
+        pb={{ base: "80px", md: 0 }}
+        p={6}
         minH="calc(100vh - 4rem)"
       >
-        <Outlet />
+        <Container maxW="8xl">
+          <VStack spacing={8} align="stretch">
+            {/* Page Header */}
+            <Box>
+            </Box>
+            <Outlet />
+          </VStack>
+        </Container>
       </Box>
     </Box>
   );

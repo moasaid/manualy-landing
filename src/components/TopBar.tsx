@@ -12,6 +12,7 @@ import {
   MenuItem,
   MenuDivider,
   useColorModeValue,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import {
   Search,
@@ -27,10 +28,11 @@ export default function TopBar() {
   const bgColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const inputBg = useColorModeValue('gray.50', 'gray.700');
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
     <Box
-      w="calc(100vw - 200px)"
+      w={{ base: "100vw", md: "calc(100vw - 200px)" }}
       h="16"
       bg={bgColor}
       borderBottom="1px solid"
@@ -40,8 +42,8 @@ export default function TopBar() {
       alignItems="center"
       position="fixed"
       top={0}
-      left="200px"
-      zIndex={5}
+      left={{ base: 0, md: "200px" }}
+      zIndex={15}
     >
       <HStack spacing={4} w="full" justify="space-between">
         {/* Search Bar */}

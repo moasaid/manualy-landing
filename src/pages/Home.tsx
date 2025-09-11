@@ -15,6 +15,7 @@ import {
   useColorModeValue,
   Icon,
   Divider,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import {
   X,
@@ -26,11 +27,14 @@ import {
   Plus,
   FileText,
 } from 'lucide-react';
+import Sidebar from '../components/Sidebar';
+import TopBar from '../components/TopBar';
 
 export default function Home() {
   const [showOnboarding, setShowOnboarding] = useState(true);
   const bgColor = useColorModeValue('gray.50', 'gray.900');
   const cardBg = useColorModeValue('white', 'gray.800');
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   // Mock data for recent tasks
   const recentTasks = [
@@ -123,9 +127,19 @@ export default function Home() {
   };
 
   return (
-    <Box bg={bgColor} minH="calc(100vh - 4rem)" p={6}>
-      <Container maxW="8xl">
-        <VStack spacing={8} align="stretch">
+    <Box bg={bgColor} minH="100vh">
+      {/* Sidebar */}
+      <Sidebar />
+      
+      {/* Top Bar - always show, responsive positioning */}
+      <TopBar />
+      
+      {/* Main Content */}
+      <Box
+
+      >
+        <Container maxW="8xl">
+          <VStack spacing={8} align="stretch">
           {/* Page Header */}
           <Box>
             <Text fontSize="2xl" fontWeight="bold" color="gray.800" mb={2}>
@@ -393,8 +407,9 @@ export default function Home() {
               ))}
             </SimpleGrid>
           </Box>
-        </VStack>
-      </Container>
+          </VStack>
+        </Container>
+      </Box>
     </Box>
   );
 }

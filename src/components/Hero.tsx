@@ -69,7 +69,7 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
             borderRadius="full"
             fontSize="xs"
             fontWeight="medium"
-            bg="oklch(0.97 0 0);"
+            bg="white"
             color="black"
             border="1px solid"
             borderColor="rgba(102, 102, 243, 0.3)"

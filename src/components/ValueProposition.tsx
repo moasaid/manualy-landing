@@ -40,7 +40,7 @@ export default function ValueProposition() {
               <Box mb={6}>
                 <img 
                   src="/unit.webp" 
-                  alt="HospitalityAI Logo" 
+                  alt="Manualy Logo" 
                   style={{ 
                     height: '40px', 
                     width: 'auto'
@@ -130,7 +130,7 @@ export default function ValueProposition() {
         <Box mt={20} textAlign="center">
           <VStack spacing={6}>
             <Heading size="lg" color="gray.800">
-              "HospitalityAI reduced our training time by 60% and improved guest satisfaction scores across all our properties."
+              "Manualy reduced our training time by 60% and improved guest satisfaction scores across all our properties."
             </Heading>
             <VStack spacing={2}>
               <Text fontWeight="semibold" color="gray.700">

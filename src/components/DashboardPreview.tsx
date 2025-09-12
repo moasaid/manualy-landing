@@ -71,7 +71,7 @@ export default function DashboardPreview() {
               <Box w={6} h={6} bg="brand.500" borderRadius="md" display="flex" alignItems="center" justifyContent="center">
                 <Text color="white" fontSize="xs" fontWeight="bold">H</Text>
               </Box>
-              <Text fontWeight="semibold" color="gray.700">HospitalityAI</Text>
+              <Text fontWeight="semibold" color="gray.700">Manualy</Text>
               <Badge colorScheme="green" size="sm">Free Plan</Badge>
             </HStack>
           </VStack>

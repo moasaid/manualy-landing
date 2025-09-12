@@ -49,7 +49,7 @@ export default function Footer() {
               <HStack spacing={2} mb={4}>
                 <img 
                   src="/footer-logo.png" 
-                  alt="HospitalityAI Logo" 
+                  alt="Manualy Logo" 
                   style={{ height: '32px', width: 'auto' }}
                 />
               </HStack>
@@ -134,7 +134,7 @@ export default function Footer() {
             <HStack spacing={2}>
               <Mail size={16} />
               <Text fontSize={'sm'} color={linkColor}>
-                hello@hospitalityai.com
+                hello@manualy.uk
               </Text>
             </HStack>
             <HStack spacing={2}>
@@ -168,7 +168,7 @@ export default function Footer() {
             align={{ base: 'center', md: 'center' }}
           >
             <Text fontSize={'sm'} color={linkColor}>
-              © {new Date().getFullYear()} HospitalityAI. All rights reserved.
+              © {new Date().getFullYear()} Manualy. All rights reserved.
             </Text>
             <Stack direction={'row'} spacing={6}>
               <Link

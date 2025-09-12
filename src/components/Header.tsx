@@ -58,22 +58,22 @@ export default function Header({ onNavigateToApp, onNavigateToOnboarding }: Head
 
   return (
     <Box
-      bg={isScrolled ? 'white' : 'transparent'}
+      bg={isScrolled || isOpen ? 'white' : 'transparent'}
       px={4}
       position="fixed"
       width="100%"
       top={0}
       zIndex={1000}
       transition="all 0.3s"
-      backdropFilter={isScrolled ? 'blur(10px)' : 'none'}
-      boxShadow={isScrolled ? 'md' : 'none'}
+      backdropFilter={isScrolled || isOpen ? 'blur(10px)' : 'none'}
+      boxShadow={isScrolled || isOpen ? 'md' : 'none'}
     >
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'} maxW="7xl" mx="auto">
         <HStack spacing={4} alignItems={'center'}>
           <Box display="flex" alignItems="center" gap={2}>
             <img 
               src="/logo.png" 
-              alt="HospitalityAI Logo" 
+              alt="Manualy Logo" 
               style={{ height: '32px', width: 'auto' }}
             />
           </Box>
@@ -99,12 +99,22 @@ export default function Header({ onNavigateToApp, onNavigateToOnboarding }: Head
           aria-label={'Open Menu'}
           display={{ md: 'none' }}
           onClick={isOpen ? onClose : onOpen}
-          variant="ghost"
+          variant="unstyled"
+          color="gray.700"
+          _hover={{ color: "gray.900" }}
         />
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <Box pb={4} display={{ md: 'none' }}>
+        <Box 
+          pb={4}
+          pt={4} 
+          display={{ md: 'none' }}
+          bg="white"
+          borderTop="1px solid"
+          borderColor="gray.200"
+          mt={0}
+        >
           <Stack as={'nav'} spacing={4}>
             {Links.map((link) => (
               <NavLink key={link} href={`#${link.toLowerCase()}`}>

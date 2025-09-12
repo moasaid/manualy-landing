@@ -82,7 +82,7 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
             transition="all 0.3s ease"
           >
             <HStack spacing={2} align="center">
-              <Text>✨ New: HospitalityAI Intelligence Version 2.0</Text>
+              <Text>✨ Manualy Operations Intelligence</Text>
               <ChevronRight size={14} />
             </HStack>
           </Badge>

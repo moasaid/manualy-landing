@@ -92,7 +92,7 @@ export default function AuthModal({ isOpen, onClose, onSignInSuccess }: AuthModa
               >
                 <img 
                   src="/logo.png" 
-                  alt="HospitalityAI Logo" 
+                  alt="Manualy Logo" 
                   style={{ height: '32px', width: 'auto' }}
                 />
               </Box>

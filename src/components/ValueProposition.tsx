@@ -73,48 +73,12 @@ export default function ValueProposition() {
             </Button>
             </Box>
 
-            <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={6} w="full">
-              {stats.map((stat, index) => {
-                return (
-                  <Box
-                    key={index}
-                    p={6}
-                    bg={cardBg}
-                    borderRadius="xl"
-                    border="1px solid"
-                    borderColor="gray.200"
-                    _hover={{
-                      transform: 'translateY(-4px)',
-                      boxShadow: 'xl',
-                      borderColor: 'brand.500',
-                    }}
-                    transition="all 0.3s"
-                    cursor="pointer"
-                    height="full"
-                  >
-                    <VStack spacing={4} align="flex-start" height="full">
-                      <Box
-                        borderRadius="lg"
-                        color={stat.color}
-                      >
-                        <Image src={stat.icon} alt={stat.title} width={6} height={6} />
-                      </Box>
-                      
-                      <VStack spacing={3} align="flex-start" flex={1}>
-                        <Text color="gray.600" lineHeight={1.6}>
-                          {stat.description}
-                        </Text>
-                      </VStack>
-                    </VStack>
-                  </Box>
-                );
-              })}
-            </SimpleGrid>
+            
 
             
           </VStack>
 
-          <Box>
+          <Box position="relative">
             <Image
               src="public/unit-food.webp"
               alt="Hotel operations team using digital procedures"
@@ -124,6 +88,28 @@ export default function ValueProposition() {
               h={400}
               objectFit="cover"
             />
+            
+            {/* Overlay card positioned at bottom right */}
+            <Box
+              position="absolute"
+              bottom={4}
+              right={4}
+              p={6}
+              bg="white"
+              borderRadius="xl"
+              border="1px solid"
+              borderColor="gray.200"
+              boxShadow="xl"
+              maxW="300px"
+            >
+              <VStack spacing={4} align="flex-start" height="full">
+                <VStack spacing={3} align="flex-start" flex={1}>
+                  <Text color="gray.600" lineHeight={1.6}>
+                    Digital procedures streamline operations and ensure consistent service quality across all touchpoints.
+                  </Text>
+                </VStack>
+              </VStack>
+            </Box>
           </Box>
         </SimpleGrid>
 
@@ -137,7 +123,7 @@ export default function ValueProposition() {
                 Sarah Chen, Operations Director
               </Text>
               <Text color="gray.500">
-                Premium Resort Group - 12 Properties
+                Premium Resort Group - Unit
               </Text>
             </VStack>
           </VStack>

@@ -135,17 +135,15 @@ export default function Home() {
       <TopBar />
       
       {/* Main Content */}
-      <Box
-
-      >
+      <Box>
         <Container maxW="8xl">
           <VStack spacing={8} align="stretch">
           {/* Page Header */}
           <Box>
-            <Text fontSize="2xl" fontWeight="bold" color="gray.800" mb={2}>
+            <Text fontSize="2xl" fontWeight="bold" color={useColorModeValue('gray.800', 'white')} mb={2}>
               Welcome back, John! 👋
             </Text>
-            <Text color="gray.600">
+            <Text color={useColorModeValue('gray.600', 'gray.300')}>
               Here's what's happening with your hospitality operations today.
             </Text>
           </Box>
@@ -243,7 +241,7 @@ export default function Home() {
           {/* Recent Tasks Section */}
           <Box>
             <HStack justify="space-between" align="center" mb={4}>
-              <Text fontSize="xl" fontWeight="semibold">
+              <Text fontSize="xl" fontWeight="semibold" color={useColorModeValue('gray.800', 'white')}>
                 Recent Tasks
               </Text>
               <Button size="sm" variant="outline" rightIcon={<ChevronRight size={14} />}>
@@ -259,7 +257,7 @@ export default function Home() {
                   bg={cardBg}
                   borderRadius="xl"
                   border="1px solid"
-                  borderColor="gray.200"
+                  borderColor={useColorModeValue('gray.200', '#2d3748')}
                   _hover={{
                     transform: 'translateY(-4px)',
                     boxShadow: 'xl',
@@ -282,11 +280,11 @@ export default function Home() {
                     </Badge>
                     
                     <VStack spacing={3} align="flex-start" flex={1}>
-                      <Text fontWeight="semibold" fontSize="md" color="gray.800">
+                      <Text fontWeight="semibold" fontSize="md" color={useColorModeValue('gray.800', 'white')}>
                         {task.name}
                       </Text>
                       
-                      <Text fontSize="sm" color="gray.600" lineHeight={1.6}>
+                      <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6}>
                         {task.description}
                       </Text>
 
@@ -294,7 +292,7 @@ export default function Home() {
                       <VStack spacing={2} align="flex-start" w="full">
                         <HStack spacing={2}>
                           <Avatar size="xs" name={task.assignee} />
-                          <Text fontSize="xs" color="gray.500">
+                          <Text fontSize="xs" color={useColorModeValue('gray.500', 'gray.400')}>
                             Assigned to {task.assignee}
                           </Text>
                         </HStack>
@@ -302,13 +300,13 @@ export default function Home() {
                         {task.status === 'Completed' && task.completedBy && (
                           <HStack spacing={2}>
                             <Avatar size="xs" name={task.completedBy} />
-                            <Text fontSize="xs" color="gray.500">
+                            <Text fontSize="xs" color={useColorModeValue('gray.500', 'gray.400')}>
                               Completed by {task.completedBy}
                             </Text>
                           </HStack>
                         )}
                         
-                        <HStack spacing={1} color="gray.500">
+                        <HStack spacing={1} color={useColorModeValue('gray.500', 'gray.400')}>
                           <Clock size={12} />
                           <Text fontSize="xs">
                             {task.status === 'Completed' && task.completedAt 
@@ -344,7 +342,7 @@ export default function Home() {
           {/* Template Manuals Section */}
           <Box>
             <HStack justify="space-between" align="center" mb={4}>
-              <Text fontSize="xl" fontWeight="semibold">
+              <Text fontSize="xl" fontWeight="semibold" color={useColorModeValue('gray.800', 'white')}>
                 Template Manuals
               </Text>
               <Button size="sm" leftIcon={<Plus size={14} />} colorScheme="blue">
@@ -360,7 +358,7 @@ export default function Home() {
                   bg={cardBg}
                   borderRadius="xl"
                   border="1px solid"
-                  borderColor="gray.200"
+                  borderColor={useColorModeValue('gray.200', '#2d3748')}
                   _hover={{
                     transform: 'translateY(-4px)',
                     boxShadow: 'xl',
@@ -379,13 +377,13 @@ export default function Home() {
                     </Box>
                     
                     <VStack spacing={3} align="flex-start" flex={1}>
-                      <Text fontWeight="semibold" fontSize="md" color="gray.800">
+                      <Text fontWeight="semibold" fontSize="md" color={useColorModeValue('gray.800', 'white')}>
                         {manual.title}
                       </Text>
-                      <Text fontSize="sm" color="gray.600" lineHeight={1.6}>
+                      <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6}>
                         {manual.description}
                       </Text>
-                      <HStack spacing={1} color="gray.500">
+                      <HStack spacing={1} color={useColorModeValue('gray.500', 'gray.400')}>
                         <FileText size={14} />
                         <Text fontSize="xs">{manual.tasks} tasks</Text>
                       </HStack>

@@ -226,13 +226,13 @@ export default function OperationsCards() {
             <Heading
               as="h2"
               size="xl"
-              color="gray.800"
+              color={useColorModeValue('gray.800', 'white')}
               lineHeight={1.2}
               fontFamily="Geist, sans-serif"
             >
               Hospitality Operations Made Simple
             </Heading>
-            <Text fontSize="lg" color="gray.600" lineHeight={1.6}>
+            <Text fontSize="lg" color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6}>
               Streamline your hotel and restaurant operations with our comprehensive 
               procedure templates. Each operation includes detailed steps and estimated completion times.
             </Text>

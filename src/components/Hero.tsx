@@ -27,7 +27,7 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
       alignItems="center"
       justifyContent="center"
       overflow="hidden"
-      bg="white"
+      bg={useColorModeValue('white', 'gray.900')}
       pt={20}
       pb={16}
     >
@@ -69,8 +69,8 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
             borderRadius="full"
             fontSize="xs"
             fontWeight="medium"
-            bg="white"
-            color="black"
+            bg={useColorModeValue('white', 'gray.800')}
+            color={useColorModeValue('black', 'white')}
             border="1px solid"
             borderColor="rgba(102, 102, 243, 0.3)"
             boxShadow="0 0 20px rgba(102, 102, 243, 0.4), 0 0 40px rgba(102, 102, 243, 0.2), 0 0 60px rgba(102, 102, 243, 0.1)"
@@ -94,7 +94,7 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
               fontSize={{ base: '3xl', md: '5xl', lg: '6xl' }}
               fontWeight="bold"
               lineHeight={1.1}
-              color="gray.900"
+              color={useColorModeValue('gray.900', 'white')}
               textAlign="center"
               fontFamily="Geist, sans-serif"
             >
@@ -106,7 +106,7 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
             
             <Text 
               fontSize={{ base: 'lg', md: 'xl' }} 
-              color="gray.600" 
+              color={useColorModeValue('gray.600', 'gray.300')} 
               lineHeight={1.6}
               maxW="2xl"
               textAlign="center"
@@ -141,10 +141,12 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
               py={6}
               fontSize="lg"
               fontWeight="semibold"
-              bg="white"
+              bg={useColorModeValue('white', 'gray.800')}
+              color={useColorModeValue('gray.900', 'white')}
+              borderColor={useColorModeValue('gray.200', 'gray.600')}
               _hover={{
                 transform: 'translateY(-1px)',
-                bg: 'gray.50',
+                bg: useColorModeValue('gray.50', 'gray.700'),
               }}
               transition="all 0.3s"
             >
@@ -158,7 +160,7 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star key={star} size={16} fill="#F6AD55" color="#F6AD55" />
               ))}
-              <Text fontSize="sm" color="gray.600" ml={2}>
+              <Text fontSize="sm" color={useColorModeValue('gray.600', 'gray.300')} ml={2}>
                 Free Forever. No Credit Card.
               </Text>
             </HStack>

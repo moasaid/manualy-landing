@@ -89,7 +89,7 @@ const MenuItem = ({ item, isMobile = false }: { item: typeof menuItems[0], isMob
 export default function Sidebar() {
   const navigate = useNavigate();
   const bgColor = useColorModeValue('white', 'gray.800');
-  const borderColor = useColorModeValue('gray.200', 'gray.700');
+  const borderColor = useColorModeValue('gray.200', '#2d3748');
   const textColor = useColorModeValue('gray.800', 'white');
   
   const isMobile = useBreakpointValue({ base: true, md: false });

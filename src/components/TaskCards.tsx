@@ -71,8 +71,8 @@ const tasks = [
 ];
 
 const TaskCard = ({ task, onEditTask, onStartManual }: { task: typeof tasks[0]; onEditTask: () => void; onStartManual: () => void }) => {
-  const cardBg = useColorModeValue('white', 'gray.700');
-  const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const cardBg = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', '#2d3748');
   const textColor = useColorModeValue('gray.800', 'white');
   
   return (
@@ -123,8 +123,8 @@ const TaskCard = ({ task, onEditTask, onStartManual }: { task: typeof tasks[0]; 
               icon={<MoreVertical size={16} />}
               size="sm"
               variant="ghost"
-              color="gray.500"
-              _hover={{ color: task.color, bg: 'gray.100' }}
+              color={useColorModeValue('gray.500', 'gray.400')}
+              _hover={{ color: task.color, bg: useColorModeValue('gray.100', 'gray.600') }}
               position="absolute"
               top={2}
               right={1}
@@ -143,7 +143,7 @@ const TaskCard = ({ task, onEditTask, onStartManual }: { task: typeof tasks[0]; 
             {task.name}
           </Heading>
           
-          <Text color="gray.600" lineHeight={1.6} fontSize="sm">
+          <Text color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6} fontSize="sm">
             {task.description}
           </Text>
         </VStack>
@@ -197,7 +197,7 @@ export default function TaskCards() {
       <VStack spacing={8} align="stretch">
         {/* Header */}
         <Box>
-          <Text fontSize="xl" fontWeight="semibold">
+          <Text fontSize="xl" fontWeight="semibold" color={useColorModeValue('gray.800', 'white')}>
             Tasks
           </Text>
         </Box>

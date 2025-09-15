@@ -11,6 +11,8 @@ import {
   Divider,
   IconButton,
   useColorModeValue,
+  useColorMode,
+  Button,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -20,12 +22,15 @@ import {
   Facebook, 
   Twitter, 
   Linkedin, 
-  Youtube 
+  Youtube,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 const ListHeader = ({ children }: { children: React.ReactNode }) => {
+  const headerColor = useColorModeValue('white', 'white');
   return (
-    <Text fontWeight={'500'} fontSize={'lg'} mb={2} color="white">
+    <Text fontWeight={'500'} fontSize={'lg'} mb={2} color={headerColor}>
       {children}
     </Text>
   );
@@ -33,9 +38,10 @@ const ListHeader = ({ children }: { children: React.ReactNode }) => {
 
 export default function Footer() {
   const navigate = useNavigate();
-  const bg = useColorModeValue('gray.900', 'gray.900');
-  const textColor = useColorModeValue('gray.200', 'gray.200');
-  const linkColor = useColorModeValue('gray.300', 'gray.300');
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bg = 'gray.900';
+  const textColor = useColorModeValue('gray.200', 'gray.300');
+  const linkColor = useColorModeValue('gray.300', 'gray.400');
   
   return (
     <Box bg={bg} color={textColor}>
@@ -64,7 +70,7 @@ export default function Footer() {
                 icon={<Facebook size={20} />}
                 bg="transparent"
                 color={linkColor}
-                _hover={{ color: 'brand.400', bg: 'gray.800' }}
+                _hover={{ color: 'brand.400', bg: useColorModeValue('gray.800', 'gray.700') }}
                 size="sm"
               />
               <IconButton
@@ -72,7 +78,7 @@ export default function Footer() {
                 icon={<Twitter size={20} />}
                 bg="transparent"
                 color={linkColor}
-                _hover={{ color: 'brand.400', bg: 'gray.800' }}
+                _hover={{ color: 'brand.400', bg: useColorModeValue('gray.800', 'gray.700') }}
                 size="sm"
               />
               <IconButton
@@ -80,7 +86,7 @@ export default function Footer() {
                 icon={<Linkedin size={20} />}
                 bg="transparent"
                 color={linkColor}
-                _hover={{ color: 'brand.400', bg: 'gray.800' }}
+                _hover={{ color: 'brand.400', bg: useColorModeValue('gray.800', 'gray.700') }}
                 size="sm"
               />
               <IconButton
@@ -88,7 +94,7 @@ export default function Footer() {
                 icon={<Youtube size={20} />}
                 bg="transparent"
                 color={linkColor}
-                _hover={{ color: 'brand.400', bg: 'gray.800' }}
+                _hover={{ color: 'brand.400', bg: useColorModeValue('gray.800', 'gray.700') }}
                 size="sm"
               />
             </Stack>
@@ -154,13 +160,34 @@ export default function Footer() {
                 </Text>
               </VStack>
             </HStack>
+            
+            {/* Theme Toggle */}
+            <Box mt={4}>
+              <Button
+                onClick={toggleColorMode}
+                size="sm"
+                variant="outline"
+                colorScheme="gray"
+                leftIcon={colorMode === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+                bg="transparent"
+                borderColor={linkColor}
+                color={linkColor}
+                _hover={{
+                  bg: useColorModeValue('gray.800', 'gray.700'),
+                  color: 'white',
+                  borderColor: 'white'
+                }}
+              >
+                {colorMode === 'light' ? 'Dark' : 'Light'} Mode
+              </Button>
+            </Box>
           </Stack>
         </SimpleGrid>
       </Container>
       
       <Box py={6}>
         <Container maxW={'7xl'}>
-          <Divider mb={6} borderColor="gray.700" />
+          <Divider mb={6} borderColor={useColorModeValue('gray.700', 'gray.600')} />
           <Stack
             direction={{ base: 'column', md: 'row' }}
             spacing={4}
@@ -168,14 +195,14 @@ export default function Footer() {
             align={{ base: 'center', md: 'center' }}
           >
             <Text fontSize={'sm'} color={linkColor}>
-              © {new Date().getFullYear()} Manualy. All rights reserved.
+              {new Date().getFullYear()} Manualy. All rights reserved.
             </Text>
             <Stack direction={'row'} spacing={6}>
               <Link
                 href={'#'}
                 fontSize={'sm'}
                 color={linkColor}
-                _hover={{ color: 'white' }}
+                _hover={{ color: useColorModeValue('white', 'gray.100') }}
               >
                 Privacy Policy
               </Link>
@@ -183,7 +210,7 @@ export default function Footer() {
                 href={'#'}
                 fontSize={'sm'}
                 color={linkColor}
-                _hover={{ color: 'white' }}
+                _hover={{ color: useColorModeValue('white', 'gray.100') }}
               >
                 Terms of Service
               </Link>
@@ -191,7 +218,7 @@ export default function Footer() {
                 href={'#'}
                 fontSize={'sm'}
                 color={linkColor}
-                _hover={{ color: 'white' }}
+                _hover={{ color: useColorModeValue('white', 'gray.100') }}
               >
                 Cookie Policy
               </Link>

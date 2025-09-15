@@ -105,10 +105,10 @@ const FeatureCard = ({ feature }: { feature: typeof features[0] }) => {
         </Box>
         
         <VStack spacing={3} align="flex-start" flex={1}>
-          <Heading size="md" color="gray.800">
+          <Heading size="md" color={useColorModeValue('gray.800', 'white')}>
             {feature.title}
           </Heading>
-          <Text color="gray.600" lineHeight={1.6}>
+          <Text color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6}>
             {feature.description}
           </Text>
         </VStack>
@@ -128,13 +128,13 @@ export default function Features() {
             <Heading
               as="h2"
               size="xl"
-              color="gray.800"
+              color={useColorModeValue('gray.800', 'white')}
               lineHeight={1.2}
               fontFamily="Geist, sans-serif"
             >
               Everything You Need to Streamline Hospitality Operations
             </Heading>
-            <Text fontSize="lg" color="gray.600" lineHeight={1.6}>
+            <Text fontSize="lg" color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6}>
               Our AI platform provides all the tools necessary to create, manage, and maintain 
               world-class operational procedures for your hospitality business.
             </Text>

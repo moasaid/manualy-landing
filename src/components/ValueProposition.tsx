@@ -50,27 +50,36 @@ export default function ValueProposition() {
               <Heading
                 as="h2"
                 size="xl"
-                color="gray.800"
+                color={useColorModeValue('gray.800', 'white')}
                 lineHeight={1.2}
                 mb={4}
                 fontFamily="Geist, sans-serif"
               >
                 Measurable Impact on Your Business Operations
               </Heading>
-              <Text fontSize="lg" color="gray.600" lineHeight={1.6} mb={6}>
+              <Text fontSize="lg" color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6} mb={6}>
                 Join hundreds of hospitality leaders who have transformed their operations 
                 with AI-powered SOPs. See the dramatic improvements in efficiency, 
                 compliance, and cost savings.
               </Text>
               <Button
-              size="lg"
-              variant="outline"
-              _hover={{
-                transform: 'translateY(-1px)',
-              }}
-            >
-              View Case Studies
-            </Button>
+                variant="outline"
+                size="lg"
+                px={8}
+                py={6}
+                fontSize="lg"
+                fontWeight="semibold"
+                bg={useColorModeValue('white', 'gray.800')}
+                color={useColorModeValue('gray.900', 'white')}
+                borderColor={useColorModeValue('gray.200', 'gray.600')}
+                _hover={{
+                  transform: 'translateY(-1px)',
+                  bg: useColorModeValue('gray.50', 'gray.700'),
+                }}
+                transition="all 0.3s"
+              >
+                View Case Studies
+              </Button>
             </Box>
 
             
@@ -95,16 +104,16 @@ export default function ValueProposition() {
               bottom={4}
               right={4}
               p={6}
-              bg="white"
+              bg={useColorModeValue('white', 'gray.800')}
               borderRadius="xl"
               border="1px solid"
-              borderColor="gray.200"
+              borderColor={useColorModeValue('gray.200', 'gray.600')}
               boxShadow="xl"
               maxW="300px"
             >
               <VStack spacing={4} align="flex-start" height="full">
                 <VStack spacing={3} align="flex-start" flex={1}>
-                  <Text color="gray.600" lineHeight={1.6}>
+                  <Text color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6}>
                     Digital procedures streamline operations and ensure consistent service quality across all touchpoints.
                   </Text>
                 </VStack>
@@ -115,14 +124,14 @@ export default function ValueProposition() {
 
         <Box mt={20} textAlign="center">
           <VStack spacing={6}>
-            <Heading size="lg" color="gray.800">
+            <Heading size="lg" color={useColorModeValue('gray.800', 'white')}>
               "Manualy reduced our training time by 60% and improved guest satisfaction scores across all our properties."
             </Heading>
             <VStack spacing={2}>
-              <Text fontWeight="semibold" color="gray.700">
+              <Text fontWeight="semibold" color={useColorModeValue('gray.700', 'gray.200')}>
                 Sarah Chen, Operations Director
               </Text>
-              <Text color="gray.500">
+              <Text color={useColorModeValue('gray.500', 'gray.400')}>
                 Premium Resort Group - Unit
               </Text>
             </VStack>

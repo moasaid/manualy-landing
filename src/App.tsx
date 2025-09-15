@@ -4,6 +4,7 @@ import Index from './pages/Index';
 import Tasks from './pages/Tasks';
 import Onboarding from './pages/Onboarding';
 import Home from './pages/Home';
+import Settings from './pages/Settings';
 import TaskCards from './components/TaskCards';
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
           <Route path="agent" element={<div>Agent Page</div>} />
           <Route path="schedule" element={<div>Schedule Page</div>} />
           <Route path="members" element={<div>Members Page</div>} />
-          <Route path="settings" element={<div>Settings Page</div>} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </Router>

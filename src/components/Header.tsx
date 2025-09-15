@@ -28,7 +28,7 @@ const NavLink = ({ children, href }: { children: React.ReactNode; href: string }
     }}
     href={href}
     fontWeight="medium"
-    color="gray.700"
+    color={useColorModeValue('gray.700', 'gray.200')}
     fontSize="14px"
     transition="all 0.2s"
   >
@@ -58,7 +58,7 @@ export default function Header({ onNavigateToApp, onNavigateToOnboarding }: Head
 
   return (
     <Box
-      bg={isScrolled || isOpen ? 'white' : 'transparent'}
+      bg={isScrolled || isOpen ? useColorModeValue('white', 'gray.900') : 'transparent'}
       px={4}
       position="fixed"
       width="100%"
@@ -85,10 +85,29 @@ export default function Header({ onNavigateToApp, onNavigateToOnboarding }: Head
               {link}
             </NavLink>
           ))}
-          <Button variant="outline" size="sm" mr={2} onClick={onAuthOpen}>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            mr={2} 
+            onClick={onAuthOpen}
+            color={useColorModeValue('gray.700', 'gray.200')}
+            borderColor={useColorModeValue('gray.300', 'gray.600')}
+            _hover={{
+              bg: useColorModeValue('gray.50', 'gray.700'),
+              borderColor: useColorModeValue('gray.400', 'gray.500')
+            }}
+          >
             Sign In
           </Button>
-          <Button size="sm" onClick={onNavigateToApp}>
+          <Button 
+            size="sm" 
+            onClick={onNavigateToApp}
+            bg={useColorModeValue('brand.500', 'brand.600')}
+            color="white"
+            _hover={{
+              bg: useColorModeValue('brand.600', 'brand.700')
+            }}
+          >
             Start Free Trial
           </Button>
         </HStack>
@@ -100,8 +119,8 @@ export default function Header({ onNavigateToApp, onNavigateToOnboarding }: Head
           display={{ md: 'none' }}
           onClick={isOpen ? onClose : onOpen}
           variant="unstyled"
-          color="gray.700"
-          _hover={{ color: "gray.900" }}
+          color={useColorModeValue('gray.700', 'gray.200')}
+          _hover={{ color: useColorModeValue('gray.900', 'white') }}
         />
       </Flex>
 
@@ -110,9 +129,9 @@ export default function Header({ onNavigateToApp, onNavigateToOnboarding }: Head
           pb={4}
           pt={4} 
           display={{ md: 'none' }}
-          bg="white"
+          bg={useColorModeValue('white', 'gray.900')}
           borderTop="1px solid"
-          borderColor="gray.200"
+          borderColor={useColorModeValue('gray.200', 'gray.700')}
           mt={0}
         >
           <Stack as={'nav'} spacing={4}>
@@ -121,10 +140,30 @@ export default function Header({ onNavigateToApp, onNavigateToOnboarding }: Head
                 {link}
               </NavLink>
             ))}
-            <Button variant="outline" size="sm" width="full" onClick={onAuthOpen}>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              width="full" 
+              onClick={onAuthOpen}
+              color={useColorModeValue('gray.700', 'gray.200')}
+              borderColor={useColorModeValue('gray.300', 'gray.600')}
+              _hover={{
+                bg: useColorModeValue('gray.50', 'gray.700'),
+                borderColor: useColorModeValue('gray.400', 'gray.500')
+              }}
+            >
               Sign In
             </Button>
-            <Button size="sm" width="full" onClick={onNavigateToApp}>
+            <Button 
+              size="sm" 
+              width="full" 
+              onClick={onNavigateToApp}
+              bg={useColorModeValue('brand.500', 'brand.600')}
+              color="white"
+              _hover={{
+                bg: useColorModeValue('brand.600', 'brand.700')
+              }}
+            >
               Start Free Trial
             </Button>
           </Stack>

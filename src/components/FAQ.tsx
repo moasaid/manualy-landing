@@ -61,13 +61,13 @@ export default function FAQ() {
             <Heading
               as="h2"
               size="xl"
-              color="gray.800"
+              color={useColorModeValue('gray.800', 'white')}
               lineHeight={1.2}
               fontFamily="Geist, sans-serif"
             >
               Frequently Asked Questions
             </Heading>
-            <Text fontSize="lg" color="gray.600" lineHeight={1.6}>
+            <Text fontSize="lg" color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6}>
               Get answers to common questions about implementing AI-powered SOPs 
               in your hospitality business.
             </Text>
@@ -95,14 +95,14 @@ export default function FAQ() {
                   borderRadius="lg"
                 >
                   <Box flex="1" textAlign="left">
-                    <Text fontWeight="semibold" color="gray.800" fontSize="lg">
+                    <Text fontWeight="semibold" color={useColorModeValue('gray.800', 'white')} fontSize="lg">
                       {faq.question}
                     </Text>
                   </Box>
                   <AccordionIcon color="brand.500" />
                 </AccordionButton>
                 <AccordionPanel px={6} pb={6}>
-                  <Text color="gray.600" lineHeight={1.6}>
+                  <Text color={useColorModeValue('gray.600', 'gray.300')} lineHeight={1.6}>
                     {faq.answer}
                   </Text>
                 </AccordionPanel>
@@ -111,10 +111,25 @@ export default function FAQ() {
           </Accordion>
 
           <Box textAlign="center" pt={8}>
-            <Text color="gray.600" mb={4}>
+            <Text color={useColorModeValue('gray.600', 'gray.300')} mb={4}>
               Still have questions?
             </Text>
-            <Button variant="outline" size="lg">
+            <Button
+              variant="outline"
+              size="lg"
+              px={8}
+              py={6}
+              fontSize="lg"
+              fontWeight="semibold"
+              bg={useColorModeValue('white', 'gray.800')}
+              color={useColorModeValue('gray.900', 'white')}
+              borderColor={useColorModeValue('gray.200', 'gray.600')}
+              _hover={{
+                transform: 'translateY(-1px)',
+                bg: useColorModeValue('gray.50', 'gray.700'),
+              }}
+              transition="all 0.3s"
+            >
               Contact Our Team
             </Button>
           </Box>

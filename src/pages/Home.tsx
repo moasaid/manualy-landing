@@ -345,7 +345,7 @@ export default function Home() {
               <Text fontSize="xl" fontWeight="semibold" color={useColorModeValue('gray.800', 'white')}>
                 Template Manuals
               </Text>
-              <Button size="sm" leftIcon={<Plus size={14} />} colorScheme="blue">
+              <Button size="sm" leftIcon={<Plus size={14} />} colorScheme="brand">
                 Create Manual
               </Button>
             </HStack>

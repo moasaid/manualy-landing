@@ -167,7 +167,7 @@ const OperationCard = ({ operation }: { operation: typeof operations[0] }) => {
 export default function OperationsCards() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const sectionBg = useColorModeValue('gray.50', 'gray.900');
+  const sectionBg = useColorModeValue('gray.50', 'gray.800');
   const buttonBg = useColorModeValue('white', 'gray.700');
   const buttonColor = useColorModeValue('gray.600', 'gray.300');
   

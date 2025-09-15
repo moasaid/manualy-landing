@@ -50,7 +50,7 @@ const faqs = [
 ];
 
 export default function FAQ() {
-  const sectionBg = useColorModeValue('white', 'gray.900');
+  const sectionBg = useColorModeValue('white', 'gray.800');
   const cardBg = useColorModeValue('gray.50', 'gray.700');
   
   return (
@@ -123,7 +123,7 @@ export default function FAQ() {
               fontWeight="semibold"
               bg={useColorModeValue('white', 'gray.800')}
               color={useColorModeValue('gray.900', 'white')}
-              borderColor={useColorModeValue('gray.200', 'gray.600')}
+              borderColor={useColorModeValue('gray.300', '#2d3748')}
               _hover={{
                 transform: 'translateY(-1px)',
                 bg: useColorModeValue('gray.50', 'gray.700'),

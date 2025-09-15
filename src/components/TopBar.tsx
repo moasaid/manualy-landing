@@ -49,7 +49,7 @@ export default function TopBar() {
         {/* Search Bar */}
         <InputGroup maxW="400px">
           <InputLeftElement pointerEvents="none">
-            <Search size={18} color="gray" />
+            <Search size={18} color={useColorModeValue('gray', 'white')} />
           </InputLeftElement>
           <Input
             placeholder="Search"
@@ -57,8 +57,8 @@ export default function TopBar() {
             border="1px solid"
             borderColor={borderColor}
             _focus={{
-              borderColor: 'blue.500',
-              boxShadow: '0 0 0 1px blue.500',
+              borderColor: 'brand',
+              boxShadow: '0 0 0 1px brand',
             }}
           />
         </InputGroup>
@@ -70,8 +70,8 @@ export default function TopBar() {
             icon={<Bell size={20} />}
             variant="ghost"
             size="md"
-            color="gray.600"
-            _hover={{ bg: 'gray.100' }}
+            color={useColorModeValue('gray.600', 'white')}
+            _hover={{ bg: useColorModeValue('gray.100', 'gray.700') }}
           />
           
           <Menu>
@@ -81,7 +81,7 @@ export default function TopBar() {
               p={0.5}
               borderRadius="md"
               _hover={{
-                bg: 'gray.50',
+                bg: useColorModeValue('gray.50', 'gray.700'),
               }}
               transition="all 0.2s"
             >
@@ -92,7 +92,7 @@ export default function TopBar() {
                   bg="brand.500"
                   color="white"
                 />
-                <ChevronDown size={16} color="gray" />
+                <ChevronDown size={16} color={useColorModeValue('gray', 'white')} />
               </HStack>
             </MenuButton>
             <MenuList>

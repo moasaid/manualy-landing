@@ -12,7 +12,8 @@ import {
   IconButton,
   useColorModeValue,
   useColorMode,
-  Button,
+  Switch,
+  Icon,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -163,23 +164,24 @@ export default function Footer() {
             
             {/* Theme Toggle */}
             <Box mt={4}>
-              <Button
-                onClick={toggleColorMode}
-                size="sm"
-                variant="outline"
-                colorScheme="gray"
-                leftIcon={colorMode === 'light' ? <Moon size={16} /> : <Sun size={16} />}
-                bg="transparent"
-                borderColor={linkColor}
-                color={linkColor}
-                _hover={{
-                  bg: useColorModeValue('gray.800', 'gray.700'),
-                  color: 'white',
-                  borderColor: 'white'
-                }}
-              >
-                {colorMode === 'light' ? 'Dark' : 'Light'} Mode
-              </Button>
+              <HStack spacing={3} align="center">
+                <Icon 
+                  as={colorMode === 'light' ? Sun : Moon} 
+                  boxSize={4} 
+                  color={colorMode === 'light' ? linkColor : 'brand.500'} 
+                />
+                <VStack spacing={0} align="flex-start">
+                  <Text fontSize="sm" fontWeight="medium" color={linkColor}>
+                    {colorMode === 'light' ? 'Light Mode' : 'Dark Mode'}
+                  </Text>
+                </VStack>
+                <Switch
+                  size="md"
+                  colorScheme="brand"
+                  isChecked={colorMode === 'dark'}
+                  onChange={toggleColorMode}
+                />
+              </HStack>
             </Box>
           </Stack>
         </SimpleGrid>

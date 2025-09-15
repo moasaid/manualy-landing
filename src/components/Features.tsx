@@ -75,6 +75,7 @@ const features = [
 const FeatureCard = ({ feature }: { feature: typeof features[0] }) => {
   const cardBg = useColorModeValue('white', 'gray.700');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const iconFilter = useColorModeValue('none', 'invert(1)');
   
   return (
     <Box
@@ -98,7 +99,12 @@ const FeatureCard = ({ feature }: { feature: typeof features[0] }) => {
           color={feature.color}
         >
           {typeof feature.icon === 'string' ? (
-            <Image src={feature.icon} alt={feature.title} boxSize={6} />
+            <Image 
+              src={feature.icon} 
+              alt={feature.title} 
+              boxSize={6} 
+              filter={iconFilter}
+            />
           ) : (
             <Icon as={feature.icon} boxSize={6} />
           )}

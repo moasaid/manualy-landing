@@ -143,7 +143,7 @@ export default function Hero({ onNavigateToApp }: HeroProps) {
               fontWeight="semibold"
               bg={useColorModeValue('white', 'gray.800')}
               color={useColorModeValue('gray.900', 'white')}
-              borderColor={useColorModeValue('gray.200', 'gray.600')}
+              borderColor={useColorModeValue('gray.200', '#2d3748')}
               _hover={{
                 transform: 'translateY(-1px)',
                 bg: useColorModeValue('gray.50', 'gray.700'),
